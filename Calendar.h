@@ -1,7 +1,3 @@
-//
-// Created by ACER on 24.03.2020.
-//
-
 #ifndef CALENDAR_CALENDAR_H
 #define CALENDAR_CALENDAR_H
 
@@ -9,11 +5,12 @@
 #include <time.h>
 #include <vector>
 
+#include "Notes.h"
 
 
-class Calendar{
+class Calendar {
 
-    enum enMonth{
+    enum enMonth {
         January = 1,
         February,
         March,
@@ -27,6 +24,7 @@ class Calendar{
         November,
         December
     };
+
     time_t now = time(NULL);
     tm *ltm = localtime(&now);
 
@@ -35,28 +33,39 @@ class Calendar{
     int currentMonth;
     int currentYear;
     int beginningOfTheMonth;
+
     int set_calendar_dates();
+
     int set_start_of_month(int new_month, int new_year);
 
+    vector<Notes> listOfNotes;
 
 public:
-
     int whatDay;
     int month;
     int year;
 
-    Calendar(){
-        whatDay = currentDay =  ltm->tm_mday;
-        month = currentMonth = ltm->tm_mon+1;
-        year = currentYear =  ltm->tm_year + 1900;
+    Calendar() {
+        whatDay = currentDay = ltm->tm_mday;
+        month = currentMonth = ltm->tm_mon + 1;
+        year = currentYear = ltm->tm_year + 1900;
+        this->listOfNotes = listOfNotes;
     }
+
     void output();
+    void show_whole_year();
     int changes_in_date();
     int set_to_default();
 
-    ~Calendar(){};
+
+    void add_note();
+    void show_list_of_notes();
+
+
+    ~Calendar() {};
 };
 
 #include "Calendar.cpp"
+
 
 #endif //CALENDAR_CALENDAR_H

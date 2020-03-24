@@ -2,25 +2,24 @@ using namespace std;
 
 #include <iomanip>
 #include <windows.h>
-#include "Calendar.h"
 
-int Calendar::set_to_default(){
+int Calendar::set_to_default() {
     month = currentMonth;
     year = currentYear;
     whatDay = currentDay;
     return month, year, whatDay;
 }
 
-int Calendar::changes_in_date(){
-    if(month==13){  //Next Year
+int Calendar::changes_in_date() {
+    if (month == 13) {  //Next Year
         month = 1;
         year++;
     }
-    if(month==0){  //Previous Year
-        month=12;
+    if (month == 0) {  //Previous Year
+        month = 12;
         year--;
     }
-    return month,year;
+    return month, year;
 }
 
 int Calendar::set_calendar_dates() {
@@ -78,7 +77,7 @@ int Calendar::set_calendar_dates() {
             amountOfDays = 31;
             break;
     }
-    cout<<", "<<currentYear<<endl;
+    cout << ", " << currentYear << endl;
     return amountOfDays;
 }
 
@@ -99,6 +98,7 @@ void Calendar::output() {
     changes_in_date();
     set_calendar_dates();
     set_start_of_month(month, year);
+    int n = 0; //Counter for listOfNotes
 
     cout << "Mon" << setw(5) << "Tue" << setw(5) << "Wed" << setw(5) << "Thu" << setw(5) << "Fri" << setw(5) << "Sat"
          << setw(5) << "Sun" << endl;
@@ -114,14 +114,26 @@ void Calendar::output() {
             }
 
         } else {
-                if (day == currentDay && month == currentMonth && year == currentYear) {
-                    HANDLE console = GetStdHandle(STD_OUTPUT_HANDLE);
-                    SetConsoleTextAttribute(console, FOREGROUND_RED);
-                    cout << setw(5) << left << day;
-                    SetConsoleTextAttribute(console, FOREGROUND_RED|FOREGROUND_GREEN|FOREGROUND_BLUE);
-                } else {
+            //Marking current day with RED color
+            if (day == currentDay && month == currentMonth && year == currentYear) {
+                HANDLE console = GetStdHandle(STD_OUTPUT_HANDLE);
+                SetConsoleTextAttribute(console, FOREGROUND_RED);
+                cout << setw(5) << left << day;
+                SetConsoleTextAttribute(console, FOREGROUND_RED | FOREGROUND_GREEN | FOREGROUND_BLUE);
+            } else {
+                //Marking days with notes using BLUE color
+                    if (listOfNotes.size()!=0 && n<listOfNotes.size() && day == listOfNotes.at(n).noteDay && month == listOfNotes.at(n).noteMonth &&
+                        year == listOfNotes.at(n).noteYear) {
+                        HANDLE console = GetStdHandle(STD_OUTPUT_HANDLE);
+                        SetConsoleTextAttribute(console, FOREGROUND_BLUE);
+                        cout << setw(5) << left << day;
+                        SetConsoleTextAttribute(console, FOREGROUND_RED | FOREGROUND_GREEN | FOREGROUND_BLUE);
+                        n++;
+                    }
+                else {
                     cout << setw(5) << left << day;
                 }
+            }
 
             if (beginningOfTheMonth % 7 == 0) {
                 cout << endl;
@@ -129,5 +141,41 @@ void Calendar::output() {
         }
         beginningOfTheMonth++;
     }
-    cout<<"\n";
+    cout << "\n";
+}
+
+void Calendar::show_whole_year() {
+    for (int i = 1; i < 13; i++) {
+        month = i;
+        output();
+    }
+}
+
+void Calendar::add_note() {
+    Notes note;
+    cout << "Please, the date where we will place your note:" << endl;
+
+    cout << "Year: ";
+    cin >> year;
+    show_whole_year();
+    note.noteYear = year;
+
+    cout << "\nMonth: ";
+    cin >> month;
+    output();
+    note.noteMonth = month;
+
+    cout << "\nDay: ";
+    cin >> whatDay;
+    cout << endl;
+    note.noteDay = whatDay;
+
+    note.enter_note_text();
+    listOfNotes.push_back(note);
+}
+
+void Calendar::show_list_of_notes() {
+    for (int i = 0; i < listOfNotes.size(); i++) {
+        listOfNotes.at(i).show_note();
+    }
 }

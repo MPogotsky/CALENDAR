@@ -11,8 +11,6 @@ iomanip
 -
 windows.h
 -
-Calendar.h
-D:/C++PROJECTS/OOP/Projects/Calendar/Calendar.h
 
 D:/C++PROJECTS/OOP/Projects/Calendar/Calendar.h
 iostream
@@ -21,8 +19,16 @@ time.h
 -
 vector
 -
+Notes.h
+D:/C++PROJECTS/OOP/Projects/Calendar/Notes.h
 Calendar.cpp
 D:/C++PROJECTS/OOP/Projects/Calendar/Calendar.cpp
+
+D:/C++PROJECTS/OOP/Projects/Calendar/Notes.cpp
+
+D:/C++PROJECTS/OOP/Projects/Calendar/Notes.h
+Notes.cpp
+D:/C++PROJECTS/OOP/Projects/Calendar/Notes.cpp
 
 D:/C++PROJECTS/OOP/Projects/Calendar/main.cpp
 iostream
