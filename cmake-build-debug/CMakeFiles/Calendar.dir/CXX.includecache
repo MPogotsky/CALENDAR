@@ -1,0 +1,32 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+D:/C++PROJECTS/OOP/Projects/Calendar/Calendar.cpp
+iomanip
+-
+windows.h
+-
+Calendar.h
+D:/C++PROJECTS/OOP/Projects/Calendar/Calendar.h
+
+D:/C++PROJECTS/OOP/Projects/Calendar/Calendar.h
+iostream
+-
+time.h
+-
+vector
+-
+Calendar.cpp
+D:/C++PROJECTS/OOP/Projects/Calendar/Calendar.cpp
+
+D:/C++PROJECTS/OOP/Projects/Calendar/main.cpp
+iostream
+-
+Calendar.h
+D:/C++PROJECTS/OOP/Projects/Calendar/Calendar.h
+
