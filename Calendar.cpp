@@ -77,7 +77,7 @@ int Calendar::set_calendar_dates() {
             amountOfDays = 31;
             break;
     }
-    cout << ", " << currentYear << endl;
+    cout << ", " << year << endl;
     return amountOfDays;
 }
 
@@ -122,15 +122,15 @@ void Calendar::output() {
                 SetConsoleTextAttribute(console, FOREGROUND_RED | FOREGROUND_GREEN | FOREGROUND_BLUE);
             } else {
                 //Marking days with notes using BLUE color
-                    if (listOfNotes.size()!=0 && n<listOfNotes.size() && day == listOfNotes.at(n).noteDay && month == listOfNotes.at(n).noteMonth &&
-                        year == listOfNotes.at(n).noteYear) {
-                        HANDLE console = GetStdHandle(STD_OUTPUT_HANDLE);
-                        SetConsoleTextAttribute(console, FOREGROUND_BLUE);
-                        cout << setw(5) << left << day;
-                        SetConsoleTextAttribute(console, FOREGROUND_RED | FOREGROUND_GREEN | FOREGROUND_BLUE);
-                        n++;
-                    }
-                else {
+                if (listOfNotes.size() != 0 && n < listOfNotes.size() && day == listOfNotes.at(n).noteDay &&
+                    month == listOfNotes.at(n).noteMonth &&
+                    year == listOfNotes.at(n).noteYear) {
+                    HANDLE console = GetStdHandle(STD_OUTPUT_HANDLE);
+                    SetConsoleTextAttribute(console, FOREGROUND_BLUE);
+                    cout << setw(5) << left << day;
+                    SetConsoleTextAttribute(console, FOREGROUND_RED | FOREGROUND_GREEN | FOREGROUND_BLUE);
+                    n++;
+                } else {
                     cout << setw(5) << left << day;
                 }
             }
@@ -176,6 +176,29 @@ void Calendar::add_note() {
 
 void Calendar::show_list_of_notes() {
     for (int i = 0; i < listOfNotes.size(); i++) {
+        cout << "#" << i + 1 << " ";
         listOfNotes.at(i).show_note();
     }
+}
+
+void Calendar::delete_note() {
+    int n = 0;
+    cout << "Please, enter the date where you want to delete a note:" << endl;
+
+    cout << "Year: ";
+    cin >> year;
+    show_whole_year();
+
+    cout << "\nMonth: ";
+    cin >> month;
+    output();
+
+    cout << "\nDay: ";
+    cin >> whatDay;
+    cout << endl;
+
+    cout << "Please, chose note you want to delete: " << endl;
+    show_list_of_notes();
+    cin >> n;
+    listOfNotes.erase(listOfNotes.begin() + (n - 1));
 }

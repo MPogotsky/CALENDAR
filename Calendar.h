@@ -53,13 +53,19 @@ public:
     }
 
     void output();
+
     void show_whole_year();
+
     int changes_in_date();
+
     int set_to_default();
 
 
     void add_note();
+
     void show_list_of_notes();
+
+    void delete_note();
 
 
     ~Calendar() {};
