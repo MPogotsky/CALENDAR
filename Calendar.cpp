@@ -94,6 +94,18 @@ int Calendar::set_start_of_month(int new_month, int new_year) {
     return beginningOfTheMonth;
 }
 
+int Calendar::compare_dates(int day) {
+    if (!listOfNotes.empty()) {
+        for (int i = 0; i < listOfNotes.size(); i++) {
+            if (listOfNotes.at(i).noteYear == year && listOfNotes.at(i).noteMonth == month &&
+                listOfNotes.at(i).noteDay == day) {
+                return 1;
+            }
+        }
+    }
+    return 0;
+}
+
 void Calendar::output() {
     changes_in_date();
     set_calendar_dates();
@@ -114,26 +126,32 @@ void Calendar::output() {
             }
 
         } else {
-            //Marking current day with RED color
-            if (day == currentDay && month == currentMonth && year == currentYear) {
+            //If current day contains note -> marking with PURPLE color
+            if (compare_dates(day)== 1 && day == currentDay && month == currentMonth && year == currentYear){
                 HANDLE console = GetStdHandle(STD_OUTPUT_HANDLE);
-                SetConsoleTextAttribute(console, FOREGROUND_RED);
+                SetConsoleTextAttribute(console, FOREGROUND_RED | FOREGROUND_BLUE);
                 cout << setw(5) << left << day;
                 SetConsoleTextAttribute(console, FOREGROUND_RED | FOREGROUND_GREEN | FOREGROUND_BLUE);
-            } else {
-                //Marking days with notes using BLUE color
-                if (listOfNotes.size() != 0 && n < listOfNotes.size() && day == listOfNotes.at(n).noteDay &&
-                    month == listOfNotes.at(n).noteMonth &&
-                    year == listOfNotes.at(n).noteYear) {
+            }else{
+                //Marking current day with RED color
+                if (day == currentDay && month == currentMonth && year == currentYear) {
                     HANDLE console = GetStdHandle(STD_OUTPUT_HANDLE);
-                    SetConsoleTextAttribute(console, FOREGROUND_BLUE);
+                    SetConsoleTextAttribute(console, FOREGROUND_RED);
                     cout << setw(5) << left << day;
                     SetConsoleTextAttribute(console, FOREGROUND_RED | FOREGROUND_GREEN | FOREGROUND_BLUE);
-                    n++;
                 } else {
-                    cout << setw(5) << left << day;
+                    //Marking day with note with BLUE color
+                    if (compare_dates(day) == 1) {
+                        HANDLE console = GetStdHandle(STD_OUTPUT_HANDLE);
+                        SetConsoleTextAttribute(console, FOREGROUND_BLUE);
+                        cout << setw(5) << left << day;
+                        SetConsoleTextAttribute(console, FOREGROUND_RED | FOREGROUND_GREEN | FOREGROUND_BLUE);
+                    } else {
+                        cout << setw(5) << left << day;
+                    }
                 }
             }
+
 
             if (beginningOfTheMonth % 7 == 0) {
                 cout << endl;
@@ -157,46 +175,52 @@ void Calendar::add_note() {
 
     cout << "Year: ";
     cin >> year;
+    while(year > currentYear+20 || year < currentYear - 200){
+        cout<<"Invalid data, please, try again"<<endl;
+        cin>>year;
+    }
     show_whole_year();
     note.noteYear = year;
 
     cout << "\nMonth: ";
     cin >> month;
+    while(month > 12 || month < 0 ){
+        cout<<"Invalid data, please, try again"<<endl;
+        cin>>month;
+    }
     output();
     note.noteMonth = month;
 
     cout << "\nDay: ";
     cin >> whatDay;
-    cout << endl;
+    while(whatDay< 0 || whatDay > 31){
+        cout<<"Invalid data, please, try again"<<endl;
+        cin>>whatDay;
+    }
     note.noteDay = whatDay;
+
+    cout << endl;
 
     note.enter_note_text();
     listOfNotes.push_back(note);
 }
 
+
 void Calendar::show_list_of_notes() {
-    for (int i = 0; i < listOfNotes.size(); i++) {
-        cout << "#" << i + 1 << " ";
-        listOfNotes.at(i).show_note();
+    if(!listOfNotes.empty()){
+        for (int i = 0; i < listOfNotes.size(); i++) {
+
+            cout << "#" << i + 1 << " ";
+            listOfNotes.at(i).show_note();
+            cout<<endl;
+        }
+    }else{
+        cout<<"List of notes is empty"<<endl;
     }
 }
 
 void Calendar::delete_note() {
     int n = 0;
-    cout << "Please, enter the date where you want to delete a note:" << endl;
-
-    cout << "Year: ";
-    cin >> year;
-    show_whole_year();
-
-    cout << "\nMonth: ";
-    cin >> month;
-    output();
-
-    cout << "\nDay: ";
-    cin >> whatDay;
-    cout << endl;
-
     cout << "Please, chose note you want to delete: " << endl;
     show_list_of_notes();
     cin >> n;

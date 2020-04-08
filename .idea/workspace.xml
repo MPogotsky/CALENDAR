@@ -15,6 +15,14 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Calendar.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Calendar.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Calendar.h" beforeDir="false" afterPath="$PROJECT_DIR$/Calendar.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Notes.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Notes.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Notes.h" beforeDir="false" afterPath="$PROJECT_DIR$/Notes.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/3.15.3/CMakeDetermineCompilerABI_C.bin" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/3.15.3/CMakeDetermineCompilerABI_C.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/3.15.3/CMakeDetermineCompilerABI_CXX.bin" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/3.15.3/CMakeDetermineCompilerABI_CXX.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/3.15.3/CompilerIdC/a.exe" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/3.15.3/CompilerIdC/a.exe" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/3.15.3/CompilerIdCXX/a.exe" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/3.15.3/CompilerIdCXX/a.exe" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/CMakeOutput.log" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/CMakeOutput.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Calendar.dir/main.cpp.obj" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Calendar.dir/main.cpp.obj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Calendar.dir/objects.a" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Calendar.dir/objects.a" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/Calendar.exe" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Calendar.exe" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/main.cpp" afterDir="false" />
@@ -73,6 +81,9 @@
       <workItem from="1585085443095" duration="7359000" />
       <workItem from="1585313446017" duration="3530000" />
       <workItem from="1585336085211" duration="2962000" />
+      <workItem from="1586033444533" duration="637000" />
+      <workItem from="1586034384886" duration="3479000" />
+      <workItem from="1586353298845" duration="13747000" />
     </task>
     <servers />
   </component>
@@ -84,41 +95,45 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="499" y="159" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1536.824@0.0.1536.824" timestamp="1585085879164" />
-    <state width="1493" height="406" key="GridCell.Tab.0.bottom" timestamp="1585339050130">
+    <state width="1493" height="464" key="GridCell.Tab.0.bottom" timestamp="1586372459217">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="406" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1585339050130" />
-    <state width="1493" height="406" key="GridCell.Tab.0.center" timestamp="1585339050130">
+    <state width="1493" height="464" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1586372459217" />
+    <state width="1493" height="464" key="GridCell.Tab.0.center" timestamp="1586372459217">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="406" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1585339050130" />
-    <state width="1493" height="406" key="GridCell.Tab.0.left" timestamp="1585339050130">
+    <state width="1493" height="464" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1586372459217" />
+    <state width="1493" height="464" key="GridCell.Tab.0.left" timestamp="1586372459217">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="406" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1585339050130" />
-    <state width="1493" height="406" key="GridCell.Tab.0.right" timestamp="1585339050130">
+    <state width="1493" height="464" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1586372459217" />
+    <state width="1493" height="464" key="GridCell.Tab.0.right" timestamp="1586372459217">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="406" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1585339050130" />
-    <state width="1493" height="406" key="GridCell.Tab.1.bottom" timestamp="1585339050130">
+    <state width="1493" height="464" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1586372459217" />
+    <state width="1493" height="405" key="GridCell.Tab.1.bottom" timestamp="1586037868951">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="406" key="GridCell.Tab.1.bottom/0.0.1536.824@0.0.1536.824" timestamp="1585339050130" />
-    <state width="1493" height="406" key="GridCell.Tab.1.center" timestamp="1585339050130">
+    <state width="1493" height="405" key="GridCell.Tab.1.bottom/0.0.1536.824@0.0.1536.824" timestamp="1586037868951" />
+    <state width="1493" height="405" key="GridCell.Tab.1.center" timestamp="1586037868951">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="406" key="GridCell.Tab.1.center/0.0.1536.824@0.0.1536.824" timestamp="1585339050130" />
-    <state width="1493" height="406" key="GridCell.Tab.1.left" timestamp="1585339050130">
+    <state width="1493" height="405" key="GridCell.Tab.1.center/0.0.1536.824@0.0.1536.824" timestamp="1586037868951" />
+    <state width="1493" height="405" key="GridCell.Tab.1.left" timestamp="1586037868951">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="406" key="GridCell.Tab.1.left/0.0.1536.824@0.0.1536.824" timestamp="1585339050130" />
-    <state width="1493" height="406" key="GridCell.Tab.1.right" timestamp="1585339050130">
+    <state width="1493" height="405" key="GridCell.Tab.1.left/0.0.1536.824@0.0.1536.824" timestamp="1586037868951" />
+    <state width="1493" height="405" key="GridCell.Tab.1.right" timestamp="1586037868951">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="406" key="GridCell.Tab.1.right/0.0.1536.824@0.0.1536.824" timestamp="1585339050130" />
-    <state x="277" y="55" key="SettingsEditor" timestamp="1585087888201">
+    <state width="1493" height="405" key="GridCell.Tab.1.right/0.0.1536.824@0.0.1536.824" timestamp="1586037868951" />
+    <state x="277" y="55" key="SettingsEditor" timestamp="1586033514357">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="277" y="55" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1585087888201" />
+    <state x="277" y="55" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1586033514357" />
+    <state x="425" y="187" key="run.anything.popup" timestamp="1586367535075">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="425" y="187" key="run.anything.popup/0.0.1536.824@0.0.1536.824" timestamp="1586367535075" />
   </component>
 </project>

@@ -34,13 +34,14 @@ class Calendar {
     int currentYear;
     int beginningOfTheMonth;
 
+
     int set_calendar_dates();
 
     int set_start_of_month(int new_month, int new_year);
 
-    vector<Notes> listOfNotes;
-
 public:
+
+    vector<Notes> listOfNotes;
     int whatDay;
     int month;
     int year;
@@ -67,6 +68,7 @@ public:
 
     void delete_note();
 
+    int compare_dates(int day);
 
     ~Calendar() {};
 };

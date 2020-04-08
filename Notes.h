@@ -3,8 +3,13 @@
 
 
 class Notes {
-    char textOfNote[1000];
+    struct note_structure{
+        char textOfNote[1000];
+    };
+    std::vector<note_structure> list;
+
 public:
+    friend class Calendar;
     int noteDay;
     int noteMonth;
     int noteYear;
@@ -18,6 +23,7 @@ public:
     void enter_note_text();
 
     void show_note();
+
 };
 
 #include "Notes.cpp"

@@ -64,8 +64,10 @@ int main() {
         if (mainMenuOperation == 5) {
             int notesMenuOperation;
             calendar.show_whole_year();
+//            calendar.show_list_of_notes(calendar.listOfNotes);
             do {
-                cout << "1.Add note       2.Delete note\n"
+                cout << "1.Add note       2.Show list of notes\n"
+                        "3.Delete note\n"
                         "9.Back to main menu" << endl;
                 cin >> notesMenuOperation;
                 cout << "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n" << endl;
@@ -76,6 +78,11 @@ int main() {
                 }
 
                 if (notesMenuOperation == 2) {
+                    calendar.show_list_of_notes();
+                    calendar.set_to_default();
+                }
+
+                if(notesMenuOperation == 3){
                     calendar.delete_note();
                     calendar.set_to_default();
                 }
