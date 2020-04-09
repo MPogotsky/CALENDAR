@@ -169,60 +169,74 @@ void Calendar::show_whole_year() {
     }
 }
 
+//Functions with Notes
+
 void Calendar::add_note() {
     Notes note;
     cout << "Please, the date where we will place your note:" << endl;
 
     cout << "Year: ";
     cin >> year;
-    while(year > currentYear+20 || year < currentYear - 200){
-        cout<<"Invalid data, please, try again"<<endl;
-        cin>>year;
+    while (year > currentYear + 20 || year < currentYear - 200) {
+        cout << "Invalid data, please, try again " << endl;
+        cin >> year;
     }
     show_whole_year();
     note.noteYear = year;
 
     cout << "\nMonth: ";
     cin >> month;
-    while(month > 12 || month < 0 ){
-        cout<<"Invalid data, please, try again"<<endl;
-        cin>>month;
+    while (month > 12 || month < 0) {
+        cout << "Invalid data, please, try again " << endl;
+        cin >> month;
     }
     output();
     note.noteMonth = month;
 
     cout << "\nDay: ";
     cin >> whatDay;
-    while(whatDay< 0 || whatDay > 31){
-        cout<<"Invalid data, please, try again"<<endl;
-        cin>>whatDay;
+    while (whatDay < 0 || whatDay > 31) {
+        cout << "Invalid data, please, try again " << endl;
+        cin >> whatDay;
     }
     note.noteDay = whatDay;
 
+    int requirement = false;
+    for (int n = 0; n < listOfNotes.size(); n++) {
+        if (note.noteYear == listOfNotes.at(n).noteYear &&
+            note.noteMonth == listOfNotes.at(n).noteMonth &&
+            note.noteDay == listOfNotes.at(n).noteDay) {
+            listOfNotes.at(n).enter_note_text();
+            requirement = true;
+        }
+    }
     cout << endl;
+    if (requirement == false) {
+        note.enter_note_text();
+        listOfNotes.push_back(note);
+    }
 
-    note.enter_note_text();
-    listOfNotes.push_back(note);
+
 }
 
-
 void Calendar::show_list_of_notes() {
-    if(!listOfNotes.empty()){
+    if (!listOfNotes.empty()) {
         for (int i = 0; i < listOfNotes.size(); i++) {
-
             cout << "#" << i + 1 << " ";
             listOfNotes.at(i).show_note();
-            cout<<endl;
         }
-    }else{
-        cout<<"List of notes is empty"<<endl;
+    } else {
+        cout << "List of notes is empty" << endl;
     }
 }
 
 void Calendar::delete_note() {
     int n = 0;
-    cout << "Please, chose note you want to delete: " << endl;
+    cout << "Please, chose date: " << endl;
     show_list_of_notes();
     cin >> n;
-    listOfNotes.erase(listOfNotes.begin() + (n - 1));
+    listOfNotes.at(n-1).show_note();
+    cout<<"Please, enter number of the note: "<<endl;
+    cin >> n;
+    listOfNotes.at(n-1).delete_note(n-1);
 }

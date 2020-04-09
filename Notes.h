@@ -19,12 +19,14 @@ public:
         this->noteMonth = noteMonth;
         this->noteYear = noteYear;
     };
-
     void enter_note_text();
 
     void show_note();
 
+    void delete_note(int n);
+
 };
+
 
 #include "Notes.cpp"
 
