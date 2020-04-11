@@ -4,6 +4,7 @@
 int main() {
 
     Calendar calendar;
+    calendar.load_data();
     calendar.output();
     int mainMenuOperation = 0;
     const int back = 9;
@@ -64,7 +65,6 @@ int main() {
         if (mainMenuOperation == 5) {
             int notesMenuOperation;
             calendar.show_whole_year();
-//            calendar.show_list_of_notes(calendar.listOfNotes);
             do {
                 cout << "1.Add note       2.Show list of notes\n"
                         "3.Delete note\n"
@@ -96,6 +96,8 @@ int main() {
             calendar.set_to_default();
             calendar.output();
         }
+
     } while (mainMenuOperation != exit);
+    calendar.save_data();
     return 0;
 }

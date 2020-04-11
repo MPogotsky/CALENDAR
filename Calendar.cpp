@@ -3,6 +3,7 @@ using namespace std;
 #include <iomanip>
 #include <windows.h>
 
+
 int Calendar::set_to_default() {
     month = currentMonth;
     year = currentYear;
@@ -127,12 +128,12 @@ void Calendar::output() {
 
         } else {
             //If current day contains note -> marking with PURPLE color
-            if (compare_dates(day)== 1 && day == currentDay && month == currentMonth && year == currentYear){
+            if (compare_dates(day) == 1 && day == currentDay && month == currentMonth && year == currentYear) {
                 HANDLE console = GetStdHandle(STD_OUTPUT_HANDLE);
                 SetConsoleTextAttribute(console, FOREGROUND_RED | FOREGROUND_BLUE);
                 cout << setw(5) << left << day;
                 SetConsoleTextAttribute(console, FOREGROUND_RED | FOREGROUND_GREEN | FOREGROUND_BLUE);
-            }else{
+            } else {
                 //Marking current day with RED color
                 if (day == currentDay && month == currentMonth && year == currentYear) {
                     HANDLE console = GetStdHandle(STD_OUTPUT_HANDLE);
@@ -235,8 +236,57 @@ void Calendar::delete_note() {
     cout << "Please, chose date: " << endl;
     show_list_of_notes();
     cin >> n;
-    listOfNotes.at(n-1).show_note();
-    cout<<"Please, enter number of the note: "<<endl;
-    cin >> n;
-    listOfNotes.at(n-1).delete_note(n-1);
+    listOfNotes.at(n - 1).show_note();
+    cout << "Please, enter number of the note: " << endl;
+    int k = 0;
+    cin >> k;
+    listOfNotes.at(n - 1).delete_note(k - 1);
+}
+
+void Calendar::save_data() {
+    int amountOfNotesWhileSavingData;
+
+    ofstream NotesData("NotesData.txt");
+    for (int i = 0; i < listOfNotes.size(); i++) {
+        amountOfNotesWhileSavingData = listOfNotes.at(i).list.size();
+        NotesData << amountOfNotesWhileSavingData << endl;
+        NotesData << listOfNotes.at(i).noteDay << endl;
+        NotesData << listOfNotes.at(i).noteMonth << endl;
+        NotesData << listOfNotes.at(i).noteYear << endl;
+        for (int n = 0; n < listOfNotes.at(i).list.size(); n++) {
+            NotesData << listOfNotes.at(i).list.at(n).textOfNote << endl;
+        }
+    }
+    NotesData.close();
+}
+
+
+void Calendar::load_data() {
+
+
+
+    ifstream NotesData("NotesData.txt");
+    if (NotesData.is_open()) {
+        int amountOfNotesWhileSavingData;
+        while (!NotesData.eof()) {
+            Notes note;
+            NotesData >> amountOfNotesWhileSavingData;
+            NotesData >> note.noteDay;
+            NotesData >> note.noteMonth;
+            NotesData >> note.noteYear;
+            string tmpTextOfNote;
+            for (int i = 0; i < amountOfNotesWhileSavingData; i++) {
+            getline(NotesData,tmpTextOfNote);
+                    note.loading_from_file(tmpTextOfNote);
+                    std::string clear(tmpTextOfNote);
+                    amountOfNotesWhileSavingData --;
+            }
+            amountOfNotesWhileSavingData = 0;
+            listOfNotes.push_back(note);
+        }
+        NotesData.close();
+        listOfNotes.pop_back();
+    } else {
+        cout << "Can't find file. No saved data yet." << endl;
+    }
 }

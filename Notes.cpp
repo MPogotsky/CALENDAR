@@ -6,7 +6,7 @@ void Notes::enter_note_text() {
     note_structure new_note;
     cout << "Please, enter note: " << endl;
     cin.ignore();
-    cin.getline(new_note.textOfNote, 1000);
+    getline(cin,new_note.textOfNote);
     list.push_back(new_note);
 }
 
@@ -24,4 +24,10 @@ void Notes::show_note() {
 void Notes::delete_note(int n) {
     list.erase(list.begin() + (n - 1));
     cout<<"Done."<<endl;
+}
+
+void Notes::loading_from_file(string tmpTextOfNote) {
+     note_structure new_note;
+     new_note.textOfNote = tmpTextOfNote;
+     list.push_back(new_note);
 }

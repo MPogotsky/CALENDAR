@@ -4,10 +4,9 @@
 
 class Notes {
     struct note_structure{
-        char textOfNote[1000];
+        std::string textOfNote;
     };
     std::vector<note_structure> list;
-
 public:
     friend class Calendar;
     int noteDay;
@@ -25,6 +24,7 @@ public:
 
     void delete_note(int n);
 
+    void loading_from_file(std::string tmpTextOfNote);
 };
 
 

@@ -4,7 +4,7 @@
 #include <iostream>
 #include <time.h>
 #include <vector>
-
+#include <fstream>
 #include "Notes.h"
 
 
@@ -69,6 +69,10 @@ public:
     void delete_note();
 
     int compare_dates(int day);
+
+    void save_data();
+
+    void load_data();
 
     ~Calendar() {};
 };
