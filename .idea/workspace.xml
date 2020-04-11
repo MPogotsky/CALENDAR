@@ -14,14 +14,12 @@
     <list default="true" id="4a1966ae-6f8b-4b8f-9777-44472daa4b9c" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Calendar.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Calendar.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Calendar.h" beforeDir="false" afterPath="$PROJECT_DIR$/Calendar.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Notes.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Notes.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Notes.h" beforeDir="false" afterPath="$PROJECT_DIR$/Notes.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Calendar.dir/CXX.includecache" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Calendar.dir/CXX.includecache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Calendar.dir/main.cpp.obj" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Calendar.dir/main.cpp.obj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Calendar.dir/objects.a" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Calendar.dir/objects.a" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/Calendar.exe" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Calendar.exe" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/main.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/NotesData.txt" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/NotesData.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -83,7 +81,7 @@
       <workItem from="1586458046805" duration="4414000" />
       <workItem from="1586516570946" duration="14306000" />
       <workItem from="1586539725396" duration="9513000" />
-      <workItem from="1586600261902" duration="9573000" />
+      <workItem from="1586600261902" duration="15053000" />
     </task>
     <servers />
   </component>
@@ -95,26 +93,26 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="499" y="159" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1536.824@0.0.1536.824" timestamp="1585085879164" />
-    <state width="746" height="429" key="GridCell.Tab.0.bottom" timestamp="1586608798628">
+    <state width="834" height="391" key="GridCell.Tab.0.bottom" timestamp="1586619781763">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1493" height="464" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1586523047611" />
-    <state width="746" height="429" key="GridCell.Tab.0.bottom/1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1586608798628" />
-    <state width="746" height="429" key="GridCell.Tab.0.center" timestamp="1586608798628">
+    <state width="834" height="391" key="GridCell.Tab.0.bottom/1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1586619781763" />
+    <state width="834" height="391" key="GridCell.Tab.0.center" timestamp="1586619781763">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1493" height="464" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1586523047611" />
-    <state width="746" height="429" key="GridCell.Tab.0.center/1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1586608798628" />
-    <state width="746" height="429" key="GridCell.Tab.0.left" timestamp="1586608798628">
+    <state width="834" height="391" key="GridCell.Tab.0.center/1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1586619781763" />
+    <state width="834" height="391" key="GridCell.Tab.0.left" timestamp="1586619781763">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1493" height="464" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1586523047610" />
-    <state width="746" height="429" key="GridCell.Tab.0.left/1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1586608798628" />
-    <state width="746" height="429" key="GridCell.Tab.0.right" timestamp="1586608798628">
+    <state width="834" height="391" key="GridCell.Tab.0.left/1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1586619781763" />
+    <state width="834" height="391" key="GridCell.Tab.0.right" timestamp="1586619781763">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1493" height="464" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1586523047611" />
-    <state width="746" height="429" key="GridCell.Tab.0.right/1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1586608798628" />
+    <state width="834" height="391" key="GridCell.Tab.0.right/1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1586619781763" />
     <state width="912" height="532" key="GridCell.Tab.1.bottom" timestamp="1586536873643">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -139,10 +137,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="277" y="55" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1586033514357" />
-    <state x="1077" y="0" width="850" height="1047" key="dock-window-1" timestamp="1586613653618">
+    <state x="873" y="0" width="1054" height="1047" key="dock-window-1" timestamp="1586619857052">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="1077" y="0" width="850" height="1047" key="dock-window-1/1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1586613653618" />
+    <state x="873" y="0" width="1054" height="1047" key="dock-window-1/1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1586619857052" />
     <state x="425" y="187" key="run.anything.popup" timestamp="1586520663803">
       <screen x="0" y="0" width="1536" height="824" />
     </state>

@@ -3,11 +3,11 @@ using namespace std;
 
 #include "windows.h"
 void Notes::enter_note_text() {
-    note_structure new_note;
+
     cout << "Please, enter note: " << endl;
     cin.ignore();
-    getline(cin,new_note.textOfNote);
-    list.push_back(new_note);
+    getline(cin,textOfNote);
+    list.push_back(textOfNote);
 }
 
 void Notes::show_note() {
@@ -17,7 +17,7 @@ void Notes::show_note() {
     SetConsoleTextAttribute(console, FOREGROUND_RED | FOREGROUND_GREEN | FOREGROUND_BLUE);
     for(int i = 0; i<list.size(); i++){
         cout<<"-"<<i+1<<" ";
-        cout << list.at(i).textOfNote << endl;
+        cout << list.at(i) << endl;
     }
 }
 
@@ -27,7 +27,6 @@ void Notes::delete_note(int n) {
 }
 
 void Notes::loading_from_file(string tmpTextOfNote) {
-     note_structure new_note;
-     new_note.textOfNote = tmpTextOfNote;
-     list.push_back(new_note);
+     textOfNote = tmpTextOfNote;
+     list.push_back(textOfNote);
 }

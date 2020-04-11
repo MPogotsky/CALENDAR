@@ -3,10 +3,9 @@
 
 
 class Notes {
-    struct note_structure{
-        std::string textOfNote;
-    };
-    std::vector<note_structure> list;
+
+    std::string textOfNote;
+    std::vector<std::string> list;
 public:
     friend class Calendar;
     int noteDay;

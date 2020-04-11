@@ -254,7 +254,7 @@ void Calendar::save_data() {
         NotesData << listOfNotes.at(i).noteMonth << endl;
         NotesData << listOfNotes.at(i).noteYear << endl;
         for (int n = 0; n < listOfNotes.at(i).list.size(); n++) {
-            NotesData << listOfNotes.at(i).list.at(n).textOfNote << endl;
+            NotesData << listOfNotes.at(i).list.at(n) << endl;
         }
     }
     NotesData.close();
@@ -263,25 +263,22 @@ void Calendar::save_data() {
 
 void Calendar::load_data() {
 
-
-
     ifstream NotesData("NotesData.txt");
     if (NotesData.is_open()) {
-        int amountOfNotesWhileSavingData;
         while (!NotesData.eof()) {
+            int amountOfNotesWhileSavingData;
             Notes note;
             NotesData >> amountOfNotesWhileSavingData;
             NotesData >> note.noteDay;
             NotesData >> note.noteMonth;
             NotesData >> note.noteYear;
-            string tmpTextOfNote;
+            NotesData.ignore();
             for (int i = 0; i < amountOfNotesWhileSavingData; i++) {
-            getline(NotesData,tmpTextOfNote);
-                    note.loading_from_file(tmpTextOfNote);
-                    std::string clear(tmpTextOfNote);
-                    amountOfNotesWhileSavingData --;
+                string tmpTextOfNote;
+                getline(NotesData, tmpTextOfNote);
+                note.loading_from_file(tmpTextOfNote);
+                NotesData.sync();
             }
-            amountOfNotesWhileSavingData = 0;
             listOfNotes.push_back(note);
         }
         NotesData.close();
@@ -289,4 +286,5 @@ void Calendar::load_data() {
     } else {
         cout << "Can't find file. No saved data yet." << endl;
     }
+
 }
