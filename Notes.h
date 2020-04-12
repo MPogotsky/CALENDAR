@@ -3,14 +3,16 @@
 
 
 class Notes {
-
     std::string textOfNote;
     std::vector<std::string> list;
-public:
-    friend class Calendar;
+
     int noteDay;
     int noteMonth;
     int noteYear;
+
+public:
+
+    friend class Calendar;
 
     Notes() {
         this->noteDay = noteDay;

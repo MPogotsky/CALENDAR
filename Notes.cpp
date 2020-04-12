@@ -22,7 +22,7 @@ void Notes::show_note() {
 }
 
 void Notes::delete_note(int n) {
-    list.erase(list.begin() + (n - 1));
+    list.erase(list.begin() + n);
     cout<<"Done."<<endl;
 }
 

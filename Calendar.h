@@ -5,7 +5,9 @@
 #include <time.h>
 #include <vector>
 #include <fstream>
+#include <string>
 #include "Notes.h"
+#include "Remind.h"
 
 
 class Calendar {
@@ -42,6 +44,7 @@ class Calendar {
 public:
 
     vector<Notes> listOfNotes;
+    vector<Remind> listOfReminds;
     int whatDay;
     int month;
     int year;
@@ -68,11 +71,21 @@ public:
 
     void delete_note();
 
-    int compare_dates(int day);
+
+    int compare_dates(int day, string requirement);
 
     void save_data();
 
     void load_data();
+
+
+    void add_remind();
+
+    void show_list_of_reminds();
+
+    void delete_remind();
+
+    void show_remind_and_notes_for_current_day();
 
     ~Calendar() {};
 };

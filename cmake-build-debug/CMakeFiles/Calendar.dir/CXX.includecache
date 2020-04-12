@@ -21,8 +21,12 @@ vector
 -
 fstream
 -
+string
+-
 Notes.h
 D:/C++PROJECTS/OOP/Projects/Calendar/Notes.h
+Remind.h
+D:/C++PROJECTS/OOP/Projects/Calendar/Remind.h
 Calendar.cpp
 D:/C++PROJECTS/OOP/Projects/Calendar/Calendar.cpp
 
@@ -33,6 +37,14 @@ D:/C++PROJECTS/OOP/Projects/Calendar/windows.h
 D:/C++PROJECTS/OOP/Projects/Calendar/Notes.h
 Notes.cpp
 D:/C++PROJECTS/OOP/Projects/Calendar/Notes.cpp
+
+D:/C++PROJECTS/OOP/Projects/Calendar/Remind.cpp
+windows.h
+D:/C++PROJECTS/OOP/Projects/Calendar/windows.h
+
+D:/C++PROJECTS/OOP/Projects/Calendar/Remind.h
+Remind.cpp
+D:/C++PROJECTS/OOP/Projects/Calendar/Remind.cpp
 
 D:/C++PROJECTS/OOP/Projects/Calendar/main.cpp
 iostream
