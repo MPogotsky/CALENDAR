@@ -27,6 +27,8 @@ Notes.h
 D:/C++PROJECTS/OOP/Projects/Calendar/Notes.h
 Remind.h
 D:/C++PROJECTS/OOP/Projects/Calendar/Remind.h
+Task.h
+D:/C++PROJECTS/OOP/Projects/Calendar/Task.h
 Calendar.cpp
 D:/C++PROJECTS/OOP/Projects/Calendar/Calendar.cpp
 
@@ -45,6 +47,12 @@ D:/C++PROJECTS/OOP/Projects/Calendar/windows.h
 D:/C++PROJECTS/OOP/Projects/Calendar/Remind.h
 Remind.cpp
 D:/C++PROJECTS/OOP/Projects/Calendar/Remind.cpp
+
+D:/C++PROJECTS/OOP/Projects/Calendar/Task.cpp
+
+D:/C++PROJECTS/OOP/Projects/Calendar/Task.h
+Task.cpp
+D:/C++PROJECTS/OOP/Projects/Calendar/Task.cpp
 
 D:/C++PROJECTS/OOP/Projects/Calendar/main.cpp
 iostream

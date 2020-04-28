@@ -1,14 +1,13 @@
 #ifndef CALENDAR_REMIND_H
 #define CALENDAR_REMIND_H
 
-
-
 class Remind {
     std::string textOfRemind;
     std::vector<std::string> list;
     int remindDay;
     int remindMonth;
     int remindYear;
+
 public:
 
     friend class Calendar;
@@ -24,6 +23,8 @@ public:
     void show_remind();
 
     void delete_remind(int n);
+
+    void save_data();
 
     void loading_from_file(string tmpTextOfRemind);
 

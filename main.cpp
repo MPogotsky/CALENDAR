@@ -7,20 +7,20 @@ int main() {
     calendar.load_data();
     calendar.output();
     calendar.show_remind_and_notes_for_current_day();
-    int mainMenuOperation = 0;
+    int mainMenuOperation;
     const int back = 9;
     const int exit = 0;
-    int tmp = 0;
+    int tmp;
     do {
         cout << endl;
         cout << "Main menu: \n"
                 "1.Previous Month       2.Next Month\n"
                 "3.Previous&Next Month  4.Year\n"
-                "5.Notes                6.Reminds\n"
-                "9.Back \n"
+                "5.Notes(Blue)          6.Reminds(Green)\n"
+                "7.Tasks                9.Back \n"
                 "0.Exit" << endl;
         cin >> mainMenuOperation;
-        cout << "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n" << endl;
+        cout << "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n" << endl;
         if (mainMenuOperation == 1) {
             calendar.month--;
             calendar.output();
@@ -47,7 +47,7 @@ int main() {
                 cout << "1.Next Year      2.Previous Year\n"
                         "9.Back to main menu" << endl;
                 cin >> yearMenuOperation;
-                cout << "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n" << endl;
+                cout << "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n" << endl;
 
                 if (yearMenuOperation == 1) {
                     calendar.year++;
@@ -81,12 +81,10 @@ int main() {
 
                 if (notesMenuOperation == 2) {
                     calendar.show_list_of_notes();
-                    calendar.set_to_default();
                 }
 
                 if (notesMenuOperation == 3) {
                     calendar.delete_note();
-                    calendar.set_to_default();
                 }
 
             } while (notesMenuOperation != back);
@@ -95,7 +93,7 @@ int main() {
         }
 
         if (mainMenuOperation == 6) {
-            int remindsMenuOperation = 0;
+            int remindsMenuOperation;
             do {
                 cout << "Remind menu: \n"
                         "1.Add remind       2.Show list of reminds\n"
@@ -111,14 +109,45 @@ int main() {
 
                 if (remindsMenuOperation == 2) {
                     calendar.show_list_of_reminds();
-                    calendar.set_to_default();
                 }
 
                 if (remindsMenuOperation == 3) {
                     calendar.delete_remind();
-                    calendar.set_to_default();
                 }
             } while (remindsMenuOperation != back);
+            calendar.set_to_default();
+            calendar.output();
+        }
+
+        if (mainMenuOperation == 7) {
+            int tasksMenuOperation;
+
+            do {
+                cout << "Task menu: \n"
+                        "1.New task                    2.Show list of tasks\n"
+                        "3.Change status of the task   4.Delete task\n"
+                        "9.Back to main menu" << endl;
+                cin >> tasksMenuOperation;
+                cout << "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n" << endl;
+
+                if (tasksMenuOperation == 1) {
+                    calendar.add_task_list();
+                    calendar.set_to_default();
+                }
+
+                if (tasksMenuOperation == 2) {
+                    calendar.show_list_of_tasks();
+                }
+
+                if (tasksMenuOperation == 3) {
+                    calendar.change_task_status();
+                }
+
+                if (tasksMenuOperation == 4) {
+                    calendar.delete_task();
+                }
+
+            } while (tasksMenuOperation != back);
             calendar.set_to_default();
             calendar.output();
         }

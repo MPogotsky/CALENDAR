@@ -8,7 +8,7 @@ int Calendar::set_to_default() {
     month = currentMonth;
     year = currentYear;
     whatDay = currentDay;
-    return month, year, whatDay;
+    return 0;
 }
 
 int Calendar::changes_in_date() {
@@ -178,12 +178,7 @@ void Calendar::show_whole_year() {
 }
 
 
-//Functions with Notes
-
-void Calendar::add_note() {
-    Notes note;
-    cout << "Please, enter the date where we will place your note:" << endl;
-
+void Calendar::set_date_to_add_note() {
     cout << "Year: ";
     cin >> year;
     while (year > currentYear + 20 || year < currentYear - 200) {
@@ -191,7 +186,7 @@ void Calendar::add_note() {
         cin >> year;
     }
     show_whole_year();
-    note.noteYear = year;
+
 
     cout << "\nMonth: ";
     cin >> month;
@@ -200,7 +195,7 @@ void Calendar::add_note() {
         cin >> month;
     }
     output();
-    note.noteMonth = month;
+
 
     cout << "\nDay: ";
     cin >> whatDay;
@@ -208,6 +203,19 @@ void Calendar::add_note() {
         cout << "Invalid data, please, try again " << endl;
         cin >> whatDay;
     }
+
+}
+
+//Functions with Notes
+
+void Calendar::add_note() {
+    Notes note;
+    cout << "Please, enter the date where we will place your note:" << endl;
+
+    set_date_to_add_note();
+
+    note.noteYear = year;
+    note.noteMonth = month;
     note.noteDay = whatDay;
 
     int requirement = 0;
@@ -240,7 +248,9 @@ void Calendar::show_list_of_notes() {
 void Calendar::delete_note() {
     int n = 0;
     cout << "Please, chose date: " << endl;
+
     show_list_of_notes();
+
     cin >> n;
     listOfNotes.at(n - 1).show_note();
     if (listOfNotes.at(n - 1).list.size() == 1) {
@@ -253,37 +263,6 @@ void Calendar::delete_note() {
         listOfNotes.at(n - 1).delete_note(k - 1);
     }
 }
-
-void Calendar::save_data() {
-    int amountOfNotesWhileSavingData;
-    ofstream NotesData("NotesData.txt");
-    for (int i = 0; i < listOfNotes.size(); i++) {
-        amountOfNotesWhileSavingData = listOfNotes.at(i).list.size();
-        NotesData << amountOfNotesWhileSavingData << endl;
-        NotesData << listOfNotes.at(i).noteDay << endl;
-        NotesData << listOfNotes.at(i).noteMonth << endl;
-        NotesData << listOfNotes.at(i).noteYear << endl;
-        for (int n = 0; n < listOfNotes.at(i).list.size(); n++) {
-            NotesData << listOfNotes.at(i).list.at(n) << endl;
-        }
-    }
-    NotesData.close();
-
-    int amountOfRemindsWhileSavingData;
-    ofstream RemindsData("RemindsData.txt");
-    for (int i = 0; i < listOfReminds.size(); i++) {
-        amountOfRemindsWhileSavingData = listOfReminds.at(i).list.size();
-        RemindsData << amountOfRemindsWhileSavingData << endl;
-        RemindsData << listOfReminds.at(i).remindDay << endl;
-        RemindsData << listOfReminds.at(i).remindMonth << endl;
-        RemindsData << listOfReminds.at(i).remindYear << endl;
-        for (int n = 0; n < listOfReminds.at(i).list.size(); n++) {
-            RemindsData << listOfReminds.at(i).list.at(n) << endl;
-        }
-    }
-    RemindsData.close();
-}
-
 
 void Calendar::load_data() {
 
@@ -335,36 +314,40 @@ void Calendar::load_data() {
         cout << "Can't find file for loading reminds. No saved data yet." << endl;
     }
 
+    ifstream TasksData("TasksData.txt");
+    if (TasksData.is_open()) {
+        while (!TasksData.eof()) {
+            int amountOfTasksWhileSavingData;
+            Task task;
+            TasksData >> amountOfTasksWhileSavingData;
+            TasksData >> task.day;
+            TasksData >> task.month;
+            TasksData >> task.year;
+            TasksData.ignore();
+            for (int i = 0; i < amountOfTasksWhileSavingData; i++) {
+                string tmpTextOfTheTask;
+                getline(TasksData, tmpTextOfTheTask);
+                task.load_data(tmpTextOfTheTask);
+                TasksData.sync();
+            }
+            listOfTasks.push_back(task);
+        }
+        TasksData.close();
+        listOfTasks.pop_back();
+    } else {
+        cout << "Can't find file for loading tasks. No saved data yet." << endl;
+    }
+
 }
 
 void Calendar::add_remind() {
     Remind remind;
     cout << "Please, enter the date where we will place your remind:" << endl;
 
-    cout << "Year: ";
-    cin >> year;
-    while (year > currentYear + 20 || year < currentYear - 200) {
-        cout << "Invalid data, please, try again " << endl;
-        cin >> year;
-    }
-    show_whole_year();
+    set_date_to_add_note();
+
     remind.remindYear = year;
-
-    cout << "\nMonth: ";
-    cin >> month;
-    while (month > 12 || month < 0) {
-        cout << "Invalid data, please, try again " << endl;
-        cin >> month;
-    }
-    output();
     remind.remindMonth = month;
-
-    cout << "\nDay: ";
-    cin >> whatDay;
-    while (whatDay < 0 || whatDay > 31) {
-        cout << "Invalid data, please, try again " << endl;
-        cin >> whatDay;
-    }
     remind.remindDay = whatDay;
 
     int requirement = 0;
@@ -381,8 +364,6 @@ void Calendar::add_remind() {
         remind.enter_text_of_remind();
         listOfReminds.push_back(remind);
     }
-
-
 }
 
 void Calendar::show_list_of_reminds() {
@@ -399,7 +380,9 @@ void Calendar::show_list_of_reminds() {
 void Calendar::delete_remind() {
     int n = 0;
     cout << "Please, chose date: " << endl;
+
     show_list_of_reminds();
+
     cin >> n;
     listOfReminds.at(n - 1).show_remind();
     if (listOfReminds.at(n - 1).list.size() == 1) {
@@ -414,11 +397,18 @@ void Calendar::delete_remind() {
 }
 
 void Calendar::show_remind_and_notes_for_current_day() {
-    int requirementForCycleOrPos = compare_dates(currentDay + 1, "remind");
-    if (requirementForCycleOrPos != -1) {
-        cout << "You have some upcoming events: " << endl;
-        listOfReminds.at(requirementForCycleOrPos).show_remind();
+    int requirementForCycleOrPos;
+    int plusDay = 1;
+    while (plusDay < 4) {
+        requirementForCycleOrPos = compare_dates(currentDay + plusDay, "remind");
+        if (requirementForCycleOrPos != -1) {
+            cout << "You have some upcoming events: " << endl;
+            listOfReminds.at(requirementForCycleOrPos).show_remind();
+        } else {
+            plusDay++;
+        }
     }
+
     requirementForCycleOrPos = compare_dates(currentDay, "remind");
     if (requirementForCycleOrPos != -1) {
         cout << "Don`t forget about: " << endl;
@@ -428,5 +418,85 @@ void Calendar::show_remind_and_notes_for_current_day() {
     if (requirementForCycleOrPos != -1) {
         cout << "Notes for this day: " << endl;
         listOfNotes.at(requirementForCycleOrPos).show_note();
+    }
+}
+
+void Calendar::add_task_list() {
+    Task task;
+    cout << "Please, enter the date where we will place your task:" << endl;
+
+    set_date_to_add_note();
+
+    task.year = year;
+    task.month = month;
+    task.day = whatDay;
+
+    cout << endl;
+    task.add_task();
+    listOfTasks.push_back(task);
+}
+
+void Calendar::show_list_of_tasks() {
+    if (!listOfTasks.empty()) {
+        for (int i = 0; i < listOfTasks.size(); i++) {
+            cout << "#" << i + 1 << " ";
+            listOfTasks.at(i).show_tasks();
+        }
+    } else {
+        cout << "List of tasks is empty" << endl;
+    }
+}
+
+void Calendar::change_task_status() {
+    int number;
+    show_list_of_tasks();
+    cout << "Please, chose list (#): " << endl;
+    cin >> number;
+    if (number > listOfTasks.size() || number < 1) {
+        cout << "Invalid data. Please, try again." << endl;
+        cin >> number;
+    }
+    listOfTasks.at(number - 1).change_status();
+}
+
+void Calendar::delete_task() {
+    int number;
+    show_list_of_tasks();
+    cout << "Do want to delete whole list or only task? " << endl;
+    cout << "\t1.List\t2.Only task" << endl;
+    cin >> number;
+    if (number == 1) {
+        cout << "Please, chose list you want to delete (#): " << endl;
+        cin >> number;
+        if (number > listOfTasks.size() || number < 1) {
+            cout << "Invalid data. Please, try again." << endl;
+            cin >> number;
+        }
+        listOfTasks.erase(listOfTasks.begin() + (number - 1));
+    }
+
+    if (number == 2) {
+        cout << "Please, chose list (#): " << endl;
+        cin >> number;
+        if (number > listOfTasks.size() || number < 1) {
+            cout << "Invalid data. Please, try again." << endl;
+            cin >> number;
+        }
+        listOfTasks.at(number - 1).delete_task();
+    }
+
+}
+
+void Calendar::save_data() {
+    for (int i = 0; i < listOfNotes.size(); i++) {
+        listOfNotes.at(i).save_data();
+    }
+
+    for (int i = 0; i < listOfReminds.size(); i++) {
+        listOfNotes.at(i).save_data();
+    }
+
+    for (int i = 0; i < listOfTasks.size(); i++) {
+        listOfTasks.at(i).save_data();
     }
 }

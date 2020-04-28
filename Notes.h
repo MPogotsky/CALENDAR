@@ -25,6 +25,8 @@ public:
 
     void delete_note(int n);
 
+    void save_data();
+
     void loading_from_file(std::string tmpTextOfNote);
 };
 
