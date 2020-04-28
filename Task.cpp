@@ -82,3 +82,4 @@ void Task::load_data(string tmpTextOfTheTask) {
     textOfTheTask = tmpTextOfTheTask;
     tasksList.push_back(textOfTheTask);
 }
+

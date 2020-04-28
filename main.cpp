@@ -16,8 +16,8 @@ int main() {
         cout << "Main menu: \n"
                 "1.Previous Month       2.Next Month\n"
                 "3.Previous&Next Month  4.Year\n"
-                "5.Notes(Blue)          6.Reminds(Green)\n"
-                "7.Tasks                9.Back \n"
+                "5.Notes(Blue)          6.Reminds\n"
+                "7.Tasks(Green)         9.Back \n"
                 "0.Exit" << endl;
         cin >> mainMenuOperation;
         cout << "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n" << endl;
@@ -47,8 +47,7 @@ int main() {
                 cout << "1.Next Year      2.Previous Year\n"
                         "9.Back to main menu" << endl;
                 cin >> yearMenuOperation;
-                cout << "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n" << endl;
-
+                cout << "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n" << endl;
                 if (yearMenuOperation == 1) {
                     calendar.year++;
                     calendar.show_whole_year();
@@ -72,8 +71,7 @@ int main() {
                         "3.Delete note\n"
                         "9.Back to main menu" << endl;
                 cin >> notesMenuOperation;
-                cout << "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n" << endl;
-
+                cout << "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n" << endl;
                 if (notesMenuOperation == 1) {
                     calendar.add_note();
                     calendar.set_to_default();
@@ -100,8 +98,7 @@ int main() {
                         "3.Delete remind\n"
                         "9.Back to main menu" << endl;
                 cin >> remindsMenuOperation;
-                cout << "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n" << endl;
-
+                cout << "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n" << endl;
                 if (remindsMenuOperation == 1) {
                     calendar.add_remind();
                     calendar.set_to_default();
@@ -128,8 +125,7 @@ int main() {
                         "3.Change status of the task   4.Delete task\n"
                         "9.Back to main menu" << endl;
                 cin >> tasksMenuOperation;
-                cout << "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n" << endl;
-
+                cout << "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n" << endl;
                 if (tasksMenuOperation == 1) {
                     calendar.add_task_list();
                     calendar.set_to_default();

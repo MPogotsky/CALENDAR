@@ -113,6 +113,15 @@ int Calendar::compare_dates(int day, string requirement) {
             }
         }
     }
+
+    if (requirement == "task" && !listOfTasks.empty()) {
+        for (int i = 0; i < listOfTasks.size(); i++) {
+            if (listOfTasks.at(i).year == year && listOfTasks.at(i).month == month
+                && listOfTasks.at(i).day == day) {
+                return i;
+            }
+        }
+    }
     return -1;
 }
 
@@ -150,8 +159,8 @@ void Calendar::output() {
                     cout << setw(5) << left << day;
                     SetConsoleTextAttribute(console, FOREGROUND_RED | FOREGROUND_GREEN | FOREGROUND_BLUE);
                 } else {
-                    //Marking day with reminding with GREEN color
-                    if (compare_dates(day, "remind") != -1) {
+                    //Marking day with tasks with GREEN color
+                    if (compare_dates(day, "task") != -1) {
                         HANDLE console = GetStdHandle(STD_OUTPUT_HANDLE);
                         SetConsoleTextAttribute(console, FOREGROUND_GREEN);
                         cout << setw(5) << left << day;
@@ -264,81 +273,7 @@ void Calendar::delete_note() {
     }
 }
 
-void Calendar::load_data() {
-
-    ifstream NotesData("NotesData.txt");
-    if (NotesData.is_open()) {
-        while (!NotesData.eof()) {
-            int amountOfNotesWhileSavingData;
-            Notes note;
-            NotesData >> amountOfNotesWhileSavingData;
-            NotesData >> note.noteDay;
-            NotesData >> note.noteMonth;
-            NotesData >> note.noteYear;
-            NotesData.ignore();
-            for (int i = 0; i < amountOfNotesWhileSavingData; i++) {
-                string tmpTextOfNote;
-                getline(NotesData, tmpTextOfNote);
-                note.loading_from_file(tmpTextOfNote);
-                NotesData.sync();
-            }
-            listOfNotes.push_back(note);
-        }
-        NotesData.close();
-        listOfNotes.pop_back();
-    } else {
-        cout << "Can't find file for loading notes. No saved data yet." << endl;
-    }
-
-    ifstream RemindsData("RemindsData.txt");
-    if (RemindsData.is_open()) {
-        while (!RemindsData.eof()) {
-            int amountOfRemindsWhileSavingData;
-            Remind remind;
-            RemindsData >> amountOfRemindsWhileSavingData;
-            RemindsData >> remind.remindDay;
-            RemindsData >> remind.remindMonth;
-            RemindsData >> remind.remindYear;
-            RemindsData.ignore();
-            for (int i = 0; i < amountOfRemindsWhileSavingData; i++) {
-                string tmpTextOfRemind;
-                getline(RemindsData, tmpTextOfRemind);
-                remind.loading_from_file(tmpTextOfRemind);
-                RemindsData.sync();
-            }
-            listOfReminds.push_back(remind);
-        }
-        RemindsData.close();
-        listOfReminds.pop_back();
-    } else {
-        cout << "Can't find file for loading reminds. No saved data yet." << endl;
-    }
-
-    ifstream TasksData("TasksData.txt");
-    if (TasksData.is_open()) {
-        while (!TasksData.eof()) {
-            int amountOfTasksWhileSavingData;
-            Task task;
-            TasksData >> amountOfTasksWhileSavingData;
-            TasksData >> task.day;
-            TasksData >> task.month;
-            TasksData >> task.year;
-            TasksData.ignore();
-            for (int i = 0; i < amountOfTasksWhileSavingData; i++) {
-                string tmpTextOfTheTask;
-                getline(TasksData, tmpTextOfTheTask);
-                task.load_data(tmpTextOfTheTask);
-                TasksData.sync();
-            }
-            listOfTasks.push_back(task);
-        }
-        TasksData.close();
-        listOfTasks.pop_back();
-    } else {
-        cout << "Can't find file for loading tasks. No saved data yet." << endl;
-    }
-
-}
+// Functions with reminds
 
 void Calendar::add_remind() {
     Remind remind;
@@ -419,7 +354,17 @@ void Calendar::show_remind_and_notes_for_current_day() {
         cout << "Notes for this day: " << endl;
         listOfNotes.at(requirementForCycleOrPos).show_note();
     }
+
+    requirementForCycleOrPos = compare_dates(currentDay, "task");
+    if (requirementForCycleOrPos != -1) {
+        cout << "Tasks: " << endl;
+        listOfTasks.at(requirementForCycleOrPos).show_tasks();
+    }
+
+
 }
+
+// Functions with tasks
 
 void Calendar::add_task_list() {
     Task task;
@@ -493,10 +438,86 @@ void Calendar::save_data() {
     }
 
     for (int i = 0; i < listOfReminds.size(); i++) {
-        listOfNotes.at(i).save_data();
+        listOfReminds.at(i).save_data();
     }
 
     for (int i = 0; i < listOfTasks.size(); i++) {
         listOfTasks.at(i).save_data();
     }
+}
+
+void Calendar::load_data() {
+
+    ifstream NotesData("NotesData.txt");
+    if (NotesData.is_open()) {
+        while (!NotesData.eof()) {
+            int amountOfNotesWhileSavingData;
+            Notes note;
+            NotesData >> amountOfNotesWhileSavingData;
+            NotesData >> note.noteDay;
+            NotesData >> note.noteMonth;
+            NotesData >> note.noteYear;
+            NotesData.ignore();
+            for (int i = 0; i < amountOfNotesWhileSavingData; i++) {
+                string tmpTextOfNote;
+                getline(NotesData, tmpTextOfNote);
+                note.loading_from_file(tmpTextOfNote);
+                NotesData.sync();
+            }
+            listOfNotes.push_back(note);
+        }
+        NotesData.close();
+        listOfNotes.pop_back();
+    } else {
+        cout << "Can't find file for loading notes. No saved data yet." << endl;
+    }
+
+    ifstream RemindsData("RemindsData.txt");
+    if (RemindsData.is_open()) {
+        while (!RemindsData.eof()) {
+            int amountOfRemindsWhileSavingData;
+            Remind remind;
+            RemindsData >> amountOfRemindsWhileSavingData;
+            RemindsData >> remind.remindDay;
+            RemindsData >> remind.remindMonth;
+            RemindsData >> remind.remindYear;
+            RemindsData.ignore();
+            for (int i = 0; i < amountOfRemindsWhileSavingData; i++) {
+                string tmpTextOfRemind;
+                getline(RemindsData, tmpTextOfRemind);
+                remind.loading_from_file(tmpTextOfRemind);
+                RemindsData.sync();
+            }
+            listOfReminds.push_back(remind);
+        }
+        RemindsData.close();
+        listOfReminds.pop_back();
+    } else {
+        cout << "Can't find file for loading reminds. No saved data yet." << endl;
+    }
+
+    ifstream TasksData("TasksData.txt");
+    if (TasksData.is_open()) {
+        while (!TasksData.eof()) {
+            int amountOfTasksWhileSavingData;
+            Task task;
+            TasksData >> amountOfTasksWhileSavingData;
+            TasksData >> task.day;
+            TasksData >> task.month;
+            TasksData >> task.year;
+            TasksData.ignore();
+            for (int i = 0; i < amountOfTasksWhileSavingData; i++) {
+                string tmpTextOfTheTask;
+                getline(TasksData, tmpTextOfTheTask);
+                task.load_data(tmpTextOfTheTask);
+                TasksData.sync();
+            }
+            listOfTasks.push_back(task);
+        }
+        TasksData.close();
+        listOfTasks.pop_back();
+    } else {
+        cout << "Can't find file for loading tasks. No saved data yet." << endl;
+    }
+
 }
