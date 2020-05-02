@@ -348,15 +348,16 @@ void Calendar::delete_remind() {
 
 void Calendar::show_remind_and_notes_for_current_day() {
     int requirementForCycleOrPos;
-    int plusDay = 1;
-    while (plusDay < 3) {
-        requirementForCycleOrPos = compare_dates(currentDay + plusDay, "remind");
-        if (requirementForCycleOrPos != -1) {
-            cout << "You have some upcoming events: " << endl;
-            listOfReminds.at(requirementForCycleOrPos).show_remind();
-        } else {
-            plusDay++;
-        }
+    requirementForCycleOrPos = compare_dates(currentDay + 2, "remind");
+    if (requirementForCycleOrPos != -1) {
+        cout << "You have some upcoming events: " << endl;
+        listOfReminds.at(requirementForCycleOrPos).show_remind();
+    }
+
+    requirementForCycleOrPos = compare_dates(currentDay + 1, "remind");
+    if (requirementForCycleOrPos != -1) {
+        cout << "You have some upcoming events: " << endl;
+        listOfReminds.at(requirementForCycleOrPos).show_remind();
     }
 
     requirementForCycleOrPos = compare_dates(currentDay, "remind");
@@ -453,17 +454,23 @@ void Calendar::delete_task() {
 }
 
 void Calendar::save_data() {
+    ofstream NotesData("NotesData.txt");
     for (int i = 0; i < listOfNotes.size(); i++) {
-        listOfNotes.at(i).save_data();
+        listOfNotes[i].save_data(NotesData);
     }
+    NotesData.close();
 
+    ofstream RemindsData("RemindsData.txt");
     for (int i = 0; i < listOfReminds.size(); i++) {
-        listOfReminds.at(i).save_data();
+        listOfReminds[i].save_data(RemindsData);
     }
+    RemindsData.close();
 
+    ofstream TasksData("TasksData.txt");
     for (int i = 0; i < listOfTasks.size(); i++) {
-        listOfTasks.at(i).save_data();
+        listOfTasks[i].save_data(TasksData);
     }
+    TasksData.close();
 }
 
 void Calendar::load_data() {
@@ -471,19 +478,8 @@ void Calendar::load_data() {
     ifstream NotesData("NotesData.txt");
     if (NotesData.is_open()) {
         while (!NotesData.eof()) {
-            int amountOfNotesWhileSavingData;
             Notes note;
-            NotesData >> amountOfNotesWhileSavingData;
-            NotesData >> note.day;
-            NotesData >> note.month;
-            NotesData >> note.year;
-            NotesData.ignore();
-            for (int i = 0; i < amountOfNotesWhileSavingData; i++) {
-                string tmpTextOfNote;
-                getline(NotesData, tmpTextOfNote);
-                note.loading_from_file(tmpTextOfNote);
-                NotesData.sync();
-            }
+            note.loading_from_file(NotesData);
             listOfNotes.push_back(note);
         }
         NotesData.close();
@@ -495,19 +491,8 @@ void Calendar::load_data() {
     ifstream RemindsData("RemindsData.txt");
     if (RemindsData.is_open()) {
         while (!RemindsData.eof()) {
-            int amountOfRemindsWhileSavingData;
             Remind remind;
-            RemindsData >> amountOfRemindsWhileSavingData;
-            RemindsData >> remind.day;
-            RemindsData >> remind.month;
-            RemindsData >> remind.year;
-            RemindsData.ignore();
-            for (int i = 0; i < amountOfRemindsWhileSavingData; i++) {
-                string tmpTextOfRemind;
-                getline(RemindsData, tmpTextOfRemind);
-                remind.loading_from_file(tmpTextOfRemind);
-                RemindsData.sync();
-            }
+            remind.loading_from_file(RemindsData);
             listOfReminds.push_back(remind);
         }
         RemindsData.close();
@@ -519,19 +504,8 @@ void Calendar::load_data() {
     ifstream TasksData("TasksData.txt");
     if (TasksData.is_open()) {
         while (!TasksData.eof()) {
-            int amountOfTasksWhileSavingData;
             Task task;
-            TasksData >> amountOfTasksWhileSavingData;
-            TasksData >> task.day;
-            TasksData >> task.month;
-            TasksData >> task.year;
-            TasksData.ignore();
-            for (int i = 0; i < amountOfTasksWhileSavingData; i++) {
-                string tmpTextOfTheTask;
-                getline(TasksData, tmpTextOfTheTask);
-                task.load_data(tmpTextOfTheTask);
-                TasksData.sync();
-            }
+            task.load_data(TasksData);
             listOfTasks.push_back(task);
         }
         TasksData.close();
@@ -544,11 +518,7 @@ void Calendar::load_data() {
     if (Holidays.is_open()) {
         while (!Holidays.eof()) {
             Holiday holiday;
-            Holidays >> holiday.day;
-            Holidays >> holiday.month;
-            Holidays.ignore();
-            getline(Holidays, holiday.textOfHoliday);
-            Holidays.sync();
+            holiday.load_data(Holidays);
             listOfHolidays.push_back(holiday);
         }
         Holidays.close();

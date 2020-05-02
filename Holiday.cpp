@@ -18,4 +18,12 @@ void Holiday::show_holiday(int year) {
                             FOREGROUND_RED | FOREGROUND_GREEN | FOREGROUND_BLUE);
     cout << textOfHoliday << endl;
 
-};
+}
+
+void Holiday::load_data(std::istream& Holidays){
+    Holidays >> day;
+    Holidays >> month;
+    Holidays.ignore();
+    getline(Holidays, textOfHoliday);
+    Holidays.sync();
+}

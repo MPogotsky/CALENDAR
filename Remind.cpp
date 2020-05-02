@@ -37,8 +37,7 @@ void Remind::delete_remind(int n) {
     cout << "Done." << endl;
 }
 
-void Remind::save_data() {
-    ofstream RemindsData("RemindsData.txt");
+void Remind::save_data(std::ostream& RemindsData) {
     int amountOfDataWhileSaving = list.size();
     RemindsData << amountOfDataWhileSaving << endl;
     RemindsData << day << endl;
@@ -47,11 +46,21 @@ void Remind::save_data() {
     for (int n = 0; n < list.size(); n++) {
         RemindsData << list.at(n) << endl;
     }
-    RemindsData.close();
+
 }
 
-void Remind::loading_from_file(string tmpTextOfRemind) {
-    textOfRemind = tmpTextOfRemind;
-    list.push_back(textOfRemind);
+void Remind::loading_from_file(std::istream& RemindsData) {
+    int amountOfRemindsWhileSavingData;
+    RemindsData >> amountOfRemindsWhileSavingData;
+    RemindsData >> day;
+    RemindsData >> month;
+    RemindsData >> year;
+    RemindsData.ignore();
+    for (int i = 0; i < amountOfRemindsWhileSavingData; i++) {
+        string tmpTextOfRemind;
+        getline(RemindsData, textOfRemind);
+        list.push_back(textOfRemind);
+        RemindsData.sync();
+    }
 }
 

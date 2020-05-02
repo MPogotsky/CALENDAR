@@ -24,9 +24,9 @@ public:
 
     void delete_remind(int n);
 
-    void save_data();
+    void save_data(std::ostream& RemindsData);
 
-    void loading_from_file(string tmpTextOfRemind);
+    void loading_from_file(std::istream& RemindsData);
 
 };
 

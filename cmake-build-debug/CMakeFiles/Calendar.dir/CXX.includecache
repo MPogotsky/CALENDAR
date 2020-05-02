@@ -13,8 +13,6 @@ windows.h
 -
 
 D:/C++PROJECTS/OOP/Projects/Calendar/Calendar.h
-iostream
--
 time.h
 -
 vector

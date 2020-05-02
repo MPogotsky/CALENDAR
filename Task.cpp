@@ -73,9 +73,8 @@ void Task::delete_task() {
     cout << "Done." << endl;
 }
 
-void Task::save_data(){
+void Task::save_data(std::ostream& TasksData){
     int amountOfDataWhileSaving = tasksList.size();
-    ofstream TasksData("TasksData.txt");
     TasksData << amountOfDataWhileSaving << endl;
     TasksData << day <<endl;
     TasksData << month << endl;
@@ -83,11 +82,20 @@ void Task::save_data(){
     for(int i = 0; i<tasksList.size(); i++){
         TasksData << tasksList.at(i) << endl;
     }
-    TasksData.close();
 }
 
-void Task::load_data(string tmpTextOfTheTask) {
-    textOfTheTask = tmpTextOfTheTask;
-    tasksList.push_back(textOfTheTask);
+void Task::load_data(std::istream& TasksData) {
+    int amountOfTasksWhileSavingData;
+    TasksData >> amountOfTasksWhileSavingData;
+    TasksData >> day;
+    TasksData >> month;
+    TasksData >> year;
+    TasksData.ignore();
+    for (int i = 0; i < amountOfTasksWhileSavingData; i++) {
+        string tmpTextOfTheTask;
+        getline(TasksData, textOfTheTask);
+        tasksList.push_back(textOfTheTask);
+        TasksData.sync();
+    }
 }
 

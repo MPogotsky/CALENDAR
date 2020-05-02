@@ -17,6 +17,8 @@ public:
         this->textOfHoliday = textOfHoliday;
     }
     void show_holiday(int year);
+
+    void load_data(std::istream& Holidays);
 };
 
 #include "Holiday.cpp"

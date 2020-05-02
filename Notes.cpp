@@ -39,9 +39,8 @@ void Notes::delete_note(int n) {
     cout << "Done." << endl;
 }
 
-void Notes::save_data() {
+void Notes::save_data(std::ostream& NotesData) {
     int amountOfDataWhileSaving;
-    ofstream NotesData("NotesData.txt");
     amountOfDataWhileSaving = list.size();
     NotesData << amountOfDataWhileSaving << endl;
     NotesData << day << endl;
@@ -50,10 +49,19 @@ void Notes::save_data() {
     for (int n = 0; n < list.size(); n++) {
         NotesData << list.at(n) << endl;
     }
-    NotesData.close();
 }
 
-void Notes::loading_from_file(string tmpTextOfNote) {
-    textOfNote = tmpTextOfNote;
-    list.push_back(textOfNote);
+void Notes::loading_from_file(std::istream& NotesData){
+    int amountOfNotesWhileSavingData;
+    NotesData >> amountOfNotesWhileSavingData;
+    NotesData >> day;
+    NotesData >> month;
+    NotesData >> year;
+    NotesData.ignore();
+    for (int i = 0; i < amountOfNotesWhileSavingData; i++) {
+        string tmpTextOfNote;
+        getline(NotesData, textOfNote);
+        list.push_back(textOfNote);
+        NotesData.sync();
+    }
 }

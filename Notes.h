@@ -27,9 +27,9 @@ public:
 
     void delete_note(int n);
 
-    void save_data();
+    void save_data(std::ostream& NotesData);
 
-    void loading_from_file(std::string tmpTextOfNote);
+    void loading_from_file(std::istream& NotesData);
 };
 
 

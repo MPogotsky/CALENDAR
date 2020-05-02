@@ -30,9 +30,9 @@ public:
 
     void delete_task();
 
-    void save_data();
+    void save_data(std::ostream& TasksData);
 
-    void load_data(string tmpTextOfTheTask);
+    void load_data(std::istream& TasksData);
 
 };
 
