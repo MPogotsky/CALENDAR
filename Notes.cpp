@@ -14,10 +14,18 @@ void Notes::enter_note_text() {
 void Notes::show_note() {
     HANDLE console = GetStdHandle(STD_OUTPUT_HANDLE);
     SetConsoleTextAttribute(console, FOREGROUND_BLUE);
-    if (noteMonth < 10) {
-        cout << noteDay << ".0" << noteMonth << "." << noteYear << endl;
-    } else {
-        cout << noteDay << "." << noteMonth << "." << noteYear << endl;
+    if (month < 10 && day <10) {
+        cout << "0" << day << ".0" << month << "." << year << endl;
+    }else{
+        if (month < 10) {
+            cout << day << ".0" << month << "." << year << endl;
+        }else{
+            if (day < 10) {
+                cout << "0" << day << month << "." << year << endl;
+            }else{
+                cout << day << "." << month << "." << year << endl;
+            }
+        }
     }
     SetConsoleTextAttribute(console, FOREGROUND_RED | FOREGROUND_GREEN | FOREGROUND_BLUE);
     for (int i = 0; i < list.size(); i++) {
@@ -36,9 +44,9 @@ void Notes::save_data() {
     ofstream NotesData("NotesData.txt");
     amountOfDataWhileSaving = list.size();
     NotesData << amountOfDataWhileSaving << endl;
-    NotesData << noteDay << endl;
-    NotesData << noteMonth << endl;
-    NotesData << noteYear << endl;
+    NotesData << day << endl;
+    NotesData << month << endl;
+    NotesData << year << endl;
     for (int n = 0; n < list.size(); n++) {
         NotesData << list.at(n) << endl;
     }

@@ -3,6 +3,8 @@
 
 CMakeFiles/Calendar.dir/main.cpp.obj: ../Calendar.cpp
 CMakeFiles/Calendar.dir/main.cpp.obj: ../Calendar.h
+CMakeFiles/Calendar.dir/main.cpp.obj: ../Holiday.cpp
+CMakeFiles/Calendar.dir/main.cpp.obj: ../Holiday.h
 CMakeFiles/Calendar.dir/main.cpp.obj: ../Notes.cpp
 CMakeFiles/Calendar.dir/main.cpp.obj: ../Notes.h
 CMakeFiles/Calendar.dir/main.cpp.obj: ../Remind.cpp

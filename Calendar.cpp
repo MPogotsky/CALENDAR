@@ -11,7 +11,7 @@ int Calendar::set_to_default() {
     return 0;
 }
 
-int Calendar::changes_in_date() {
+void Calendar::changes_in_date() {
     if (month == 13) {  //Next Year
         month = 1;
         year++;
@@ -20,7 +20,6 @@ int Calendar::changes_in_date() {
         month = 12;
         year--;
     }
-    return month, year;
 }
 
 int Calendar::set_calendar_dates() {
@@ -98,8 +97,8 @@ int Calendar::set_start_of_month(int new_month, int new_year) {
 int Calendar::compare_dates(int day, string requirement) {
     if (requirement == "note" && !listOfNotes.empty()) {
         for (int i = 0; i < listOfNotes.size(); i++) {
-            if (listOfNotes.at(i).noteYear == year && listOfNotes.at(i).noteMonth == month &&
-                listOfNotes.at(i).noteDay == day) {
+            if (listOfNotes.at(i).year == year && listOfNotes.at(i).month == month &&
+                listOfNotes.at(i).day == day) {
                 return i;
             }
         }
@@ -107,8 +106,8 @@ int Calendar::compare_dates(int day, string requirement) {
 
     if (requirement == "remind" && !listOfReminds.empty()) {
         for (int i = 0; i < listOfReminds.size(); i++) {
-            if (listOfReminds.at(i).remindYear == year && listOfReminds.at(i).remindMonth == month &&
-                listOfReminds.at(i).remindDay == day) {
+            if (listOfReminds.at(i).year == year && listOfReminds.at(i).month == month &&
+                listOfReminds.at(i).day == day) {
                 return i;
             }
         }
@@ -118,6 +117,14 @@ int Calendar::compare_dates(int day, string requirement) {
         for (int i = 0; i < listOfTasks.size(); i++) {
             if (listOfTasks.at(i).year == year && listOfTasks.at(i).month == month
                 && listOfTasks.at(i).day == day) {
+                return i;
+            }
+        }
+    }
+
+    if (requirement == "holiday" && !listOfHolidays.empty()) {
+        for (int i = 0; i < listOfHolidays.size(); i++) {
+            if (listOfHolidays.at(i).month == month && listOfHolidays.at(i).day == day) {
                 return i;
             }
         }
@@ -166,7 +173,15 @@ void Calendar::output() {
                         cout << setw(5) << left << day;
                         SetConsoleTextAttribute(console, FOREGROUND_RED | FOREGROUND_GREEN | FOREGROUND_BLUE);
                     } else {
-                        cout << setw(5) << left << day;
+                        //Marking holidays with YELLOW color
+                        if (compare_dates(day, "holiday") != -1) {
+                            HANDLE console = GetStdHandle(STD_OUTPUT_HANDLE);
+                            SetConsoleTextAttribute(console, FOREGROUND_RED | FOREGROUND_GREEN);
+                            cout << setw(5) << left << day;
+                            SetConsoleTextAttribute(console, FOREGROUND_RED | FOREGROUND_GREEN | FOREGROUND_BLUE);
+                        } else {
+                            cout << setw(5) << left << day;
+                        }
                     }
                 }
             }
@@ -223,15 +238,15 @@ void Calendar::add_note() {
 
     set_date_to_add_note();
 
-    note.noteYear = year;
-    note.noteMonth = month;
-    note.noteDay = whatDay;
+    note.year = year;
+    note.month = month;
+    note.day = whatDay;
 
     int requirement = 0;
     for (int n = 0; n < listOfNotes.size(); n++) {
-        if (note.noteYear == listOfNotes.at(n).noteYear &&
-            note.noteMonth == listOfNotes.at(n).noteMonth &&
-            note.noteDay == listOfNotes.at(n).noteDay) {
+        if (note.year == listOfNotes.at(n).year &&
+            note.month == listOfNotes.at(n).month &&
+            note.day == listOfNotes.at(n).day) {
             listOfNotes.at(n).enter_note_text();
             requirement = 1;
         }
@@ -281,15 +296,15 @@ void Calendar::add_remind() {
 
     set_date_to_add_note();
 
-    remind.remindYear = year;
-    remind.remindMonth = month;
-    remind.remindDay = whatDay;
+    remind.year = year;
+    remind.month = month;
+    remind.day = whatDay;
 
     int requirement = 0;
     for (int n = 0; n < listOfReminds.size(); n++) {
-        if (remind.remindYear == listOfReminds.at(n).remindYear &&
-            remind.remindMonth == listOfReminds.at(n).remindMonth &&
-            remind.remindDay == listOfReminds.at(n).remindDay) {
+        if (remind.year == listOfReminds.at(n).year &&
+            remind.month == listOfReminds.at(n).month &&
+            remind.day == listOfReminds.at(n).day) {
             listOfReminds.at(n).enter_text_of_remind();
             requirement = 1;
         }
@@ -334,7 +349,7 @@ void Calendar::delete_remind() {
 void Calendar::show_remind_and_notes_for_current_day() {
     int requirementForCycleOrPos;
     int plusDay = 1;
-    while (plusDay < 4) {
+    while (plusDay < 3) {
         requirementForCycleOrPos = compare_dates(currentDay + plusDay, "remind");
         if (requirementForCycleOrPos != -1) {
             cout << "You have some upcoming events: " << endl;
@@ -361,6 +376,11 @@ void Calendar::show_remind_and_notes_for_current_day() {
         listOfTasks.at(requirementForCycleOrPos).show_tasks();
     }
 
+    requirementForCycleOrPos = compare_dates(currentDay, "holiday");
+    if (requirementForCycleOrPos != -1) {
+        cout << "Today is : " << endl;
+        listOfHolidays.at(requirementForCycleOrPos).show_holiday(currentYear);
+    }
 
 }
 
@@ -454,9 +474,9 @@ void Calendar::load_data() {
             int amountOfNotesWhileSavingData;
             Notes note;
             NotesData >> amountOfNotesWhileSavingData;
-            NotesData >> note.noteDay;
-            NotesData >> note.noteMonth;
-            NotesData >> note.noteYear;
+            NotesData >> note.day;
+            NotesData >> note.month;
+            NotesData >> note.year;
             NotesData.ignore();
             for (int i = 0; i < amountOfNotesWhileSavingData; i++) {
                 string tmpTextOfNote;
@@ -478,9 +498,9 @@ void Calendar::load_data() {
             int amountOfRemindsWhileSavingData;
             Remind remind;
             RemindsData >> amountOfRemindsWhileSavingData;
-            RemindsData >> remind.remindDay;
-            RemindsData >> remind.remindMonth;
-            RemindsData >> remind.remindYear;
+            RemindsData >> remind.day;
+            RemindsData >> remind.month;
+            RemindsData >> remind.year;
             RemindsData.ignore();
             for (int i = 0; i < amountOfRemindsWhileSavingData; i++) {
                 string tmpTextOfRemind;
@@ -520,4 +540,20 @@ void Calendar::load_data() {
         cout << "Can't find file for loading tasks. No saved data yet." << endl;
     }
 
+    ifstream Holidays("Holidays.txt");
+    if (Holidays.is_open()) {
+        while (!Holidays.eof()) {
+            Holiday holiday;
+            Holidays >> holiday.day;
+            Holidays >> holiday.month;
+            Holidays.ignore();
+            getline(Holidays, holiday.textOfHoliday);
+            Holidays.sync();
+            listOfHolidays.push_back(holiday);
+        }
+        Holidays.close();
+        listOfHolidays.pop_back();
+    } else {
+        cout << "Can't find file for loading holidays. No saved data yet." << endl;
+    }
 }

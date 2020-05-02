@@ -3,22 +3,24 @@
 
 
 class Notes {
+
     std::string textOfNote;
     std::vector<std::string> list;
 
-    int noteDay;
-    int noteMonth;
-    int noteYear;
+    int day;
+    int month;
+    int year;
 
 public:
 
     friend class Calendar;
 
     Notes() {
-        this->noteDay = noteDay;
-        this->noteMonth = noteMonth;
-        this->noteYear = noteYear;
+        this->day = day;
+        this->month = month;
+        this->year = year;
     };
+
     void enter_note_text();
 
     void show_note();

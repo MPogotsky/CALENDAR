@@ -4,18 +4,18 @@
 class Remind {
     std::string textOfRemind;
     std::vector<std::string> list;
-    int remindDay;
-    int remindMonth;
-    int remindYear;
+    int day;
+    int month;
+    int year;
 
 public:
 
     friend class Calendar;
 
     Remind(){
-        this -> remindDay = remindDay;
-        this -> remindMonth = remindMonth;
-        this -> remindYear = remindYear;
+        this -> day = day;
+        this -> month = month;
+        this -> year = year;
     }
 
     void enter_text_of_remind();

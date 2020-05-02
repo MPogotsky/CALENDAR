@@ -3,16 +3,18 @@
 
 
 class Task {
+
+    int day;
+    int month;
+    int year;
+
     string titleOfTheTaskList;
     string textOfTheTask;
     vector<string> tasksList;
 
 public:
 
-    int day;
-    int month;
-    int year;
-
+    friend class Calendar;
 
     Task() {
         this->day = day;

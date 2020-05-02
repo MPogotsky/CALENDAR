@@ -12,10 +12,18 @@ void Remind::enter_text_of_remind() {
 void Remind::show_remind() {
     HANDLE console = GetStdHandle(STD_OUTPUT_HANDLE);
     SetConsoleTextAttribute(console, FOREGROUND_GREEN);
-    if (remindMonth < 10) {
-        cout << remindDay << ".0" << remindMonth << "." << remindYear << endl;
-    } else {
-        cout << remindDay << "." << remindMonth << "." << remindYear << endl;
+    if (month < 10 && day <10) {
+        cout << "0" << day << ".0" << month << "." << year << endl;
+    }else{
+        if (month < 10) {
+            cout << day << ".0" << month << "." << year << endl;
+        }else{
+            if (day < 10) {
+                cout << "0" << day << month << "." << year << endl;
+            }else{
+                cout << day << "." << month << "." << year << endl;
+            }
+        }
     }
     SetConsoleTextAttribute(console, FOREGROUND_RED | FOREGROUND_GREEN | FOREGROUND_BLUE);
     for (int i = 0; i < list.size(); i++) {
@@ -33,9 +41,9 @@ void Remind::save_data() {
     ofstream RemindsData("RemindsData.txt");
     int amountOfDataWhileSaving = list.size();
     RemindsData << amountOfDataWhileSaving << endl;
-    RemindsData << remindDay << endl;
-    RemindsData << remindMonth << endl;
-    RemindsData << remindYear << endl;
+    RemindsData << day << endl;
+    RemindsData << month << endl;
+    RemindsData << year << endl;
     for (int n = 0; n < list.size(); n++) {
         RemindsData << list.at(n) << endl;
     }

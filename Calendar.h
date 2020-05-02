@@ -9,6 +9,7 @@
 #include "Notes.h"
 #include "Remind.h"
 #include "Task.h"
+#include "Holiday.h"
 
 
 class Calendar {
@@ -47,6 +48,8 @@ public:
     vector<Notes> listOfNotes;
     vector<Remind> listOfReminds;
     vector<Task> listOfTasks;
+    vector<Holiday> listOfHolidays;
+
     int whatDay;
     int month;
     int year;
@@ -56,13 +59,14 @@ public:
               year(ltm->tm_year + 1900), currentYear(ltm->tm_year + 1900) {
         this->listOfNotes = listOfNotes;
         this->listOfReminds = listOfReminds;
+        this->listOfTasks = listOfTasks;
     }
 
     void output();
 
     void show_whole_year();
 
-    int changes_in_date();
+    void changes_in_date();
 
     int set_to_default();
 
