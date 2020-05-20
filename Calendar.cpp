@@ -374,7 +374,7 @@ void Calendar::show_remind_and_notes_for_current_day() {
     requirementForCycleOrPos = compare_dates(currentDay, "task");
     if (requirementForCycleOrPos != -1) {
         cout << "Tasks: " << endl;
-        listOfTasks.at(requirementForCycleOrPos).show_tasks();
+        listOfTasks.at(requirementForCycleOrPos).show();
     }
 
     requirementForCycleOrPos = compare_dates(currentDay, "holiday");
@@ -406,7 +406,7 @@ void Calendar::show_list_of_tasks() {
     if (!listOfTasks.empty()) {
         for (int i = 0; i < listOfTasks.size(); i++) {
             cout << "#" << i + 1 << " ";
-            listOfTasks.at(i).show_tasks();
+            listOfTasks.at(i).show();
         }
     } else {
         cout << "List of tasks is empty" << endl;
