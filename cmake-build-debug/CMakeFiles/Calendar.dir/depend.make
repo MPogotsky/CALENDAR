@@ -11,5 +11,7 @@ CMakeFiles/Calendar.dir/main.cpp.obj: ../Remind.cpp
 CMakeFiles/Calendar.dir/main.cpp.obj: ../Remind.h
 CMakeFiles/Calendar.dir/main.cpp.obj: ../Task.cpp
 CMakeFiles/Calendar.dir/main.cpp.obj: ../Task.h
+CMakeFiles/Calendar.dir/main.cpp.obj: ../Template.cpp
+CMakeFiles/Calendar.dir/main.cpp.obj: ../Template.h
 CMakeFiles/Calendar.dir/main.cpp.obj: ../main.cpp
 

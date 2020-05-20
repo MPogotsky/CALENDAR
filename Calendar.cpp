@@ -247,13 +247,13 @@ void Calendar::add_note() {
         if (note.year == listOfNotes.at(n).year &&
             note.month == listOfNotes.at(n).month &&
             note.day == listOfNotes.at(n).day) {
-            listOfNotes.at(n).enter_note_text();
+            listOfNotes.at(n).enter_text();
             requirement = 1;
         }
     }
     cout << endl;
     if (requirement == 0) {
-        note.enter_note_text();
+        note.enter_text();
         listOfNotes.push_back(note);
     }
 }
@@ -262,7 +262,7 @@ void Calendar::show_list_of_notes() {
     if (!listOfNotes.empty()) {
         for (int i = 0; i < listOfNotes.size(); i++) {
             cout << "#" << i + 1 << " ";
-            listOfNotes.at(i).show_note();
+            listOfNotes.at(i).show();
         }
     } else {
         cout << "List of notes is empty" << endl;
@@ -276,7 +276,7 @@ void Calendar::delete_note() {
     show_list_of_notes();
 
     cin >> n;
-    listOfNotes.at(n - 1).show_note();
+    listOfNotes.at(n - 1).show();
     if (listOfNotes.at(n - 1).list.size() == 1) {
         cout << "Deleted." << endl;
         listOfNotes.erase(listOfNotes.begin() + (n - 1));
@@ -284,7 +284,7 @@ void Calendar::delete_note() {
         cout << "Please, enter number of the note: " << endl;
         int k = 0;
         cin >> k;
-        listOfNotes.at(n - 1).delete_note(k - 1);
+        listOfNotes.at(n - 1).delete_element(k - 1);
     }
 }
 
@@ -305,13 +305,13 @@ void Calendar::add_remind() {
         if (remind.year == listOfReminds.at(n).year &&
             remind.month == listOfReminds.at(n).month &&
             remind.day == listOfReminds.at(n).day) {
-            listOfReminds.at(n).enter_text_of_remind();
+            listOfReminds.at(n).enter_text();
             requirement = 1;
         }
     }
     cout << endl;
     if (requirement == 0) {
-        remind.enter_text_of_remind();
+        remind.enter_text();
         listOfReminds.push_back(remind);
     }
 }
@@ -320,7 +320,7 @@ void Calendar::show_list_of_reminds() {
     if (!listOfReminds.empty()) {
         for (int i = 0; i < listOfReminds.size(); i++) {
             cout << "#" << i + 1 << " ";
-            listOfReminds.at(i).show_remind();
+            listOfReminds.at(i).show();
         }
     } else {
         cout << "List of reminds is empty" << endl;
@@ -334,7 +334,7 @@ void Calendar::delete_remind() {
     show_list_of_reminds();
 
     cin >> n;
-    listOfReminds.at(n - 1).show_remind();
+    listOfReminds.at(n - 1).show();
     if (listOfReminds.at(n - 1).list.size() == 1) {
         cout << "Deleted." << endl;
         listOfReminds.erase(listOfReminds.begin() + (n - 1));
@@ -342,7 +342,7 @@ void Calendar::delete_remind() {
         cout << "Please, enter number of the remind: " << endl;
         int k = 0;
         cin >> k;
-        listOfReminds.at(n - 1).delete_remind(k - 1);
+        listOfReminds.at(n - 1).delete_element(k - 1);
     }
 }
 
@@ -351,24 +351,24 @@ void Calendar::show_remind_and_notes_for_current_day() {
     requirementForCycleOrPos = compare_dates(currentDay + 2, "remind");
     if (requirementForCycleOrPos != -1) {
         cout << "You have some upcoming events: " << endl;
-        listOfReminds.at(requirementForCycleOrPos).show_remind();
+        listOfReminds.at(requirementForCycleOrPos).show();
     }
 
     requirementForCycleOrPos = compare_dates(currentDay + 1, "remind");
     if (requirementForCycleOrPos != -1) {
         cout << "You have some upcoming events: " << endl;
-        listOfReminds.at(requirementForCycleOrPos).show_remind();
+        listOfReminds.at(requirementForCycleOrPos).show();
     }
 
     requirementForCycleOrPos = compare_dates(currentDay, "remind");
     if (requirementForCycleOrPos != -1) {
         cout << "Don`t forget about: " << endl;
-        listOfReminds.at(requirementForCycleOrPos).show_remind();
+        listOfReminds.at(requirementForCycleOrPos).show();
     }
     requirementForCycleOrPos = compare_dates(currentDay, "note");
     if (requirementForCycleOrPos != -1) {
         cout << "Notes for this day: " << endl;
-        listOfNotes.at(requirementForCycleOrPos).show_note();
+        listOfNotes.at(requirementForCycleOrPos).show();
     }
 
     requirementForCycleOrPos = compare_dates(currentDay, "task");
@@ -505,7 +505,7 @@ void Calendar::load_data() {
     if (TasksData.is_open()) {
         while (!TasksData.eof()) {
             Task task;
-            task.load_data(TasksData);
+            task.loading_from_file(TasksData);
             listOfTasks.push_back(task);
         }
         TasksData.close();

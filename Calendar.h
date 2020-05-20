@@ -6,6 +6,7 @@
 #include <vector>
 #include <fstream>
 #include <string>
+#include "Template.h"
 #include "Notes.h"
 #include "Remind.h"
 #include "Task.h"
@@ -105,6 +106,7 @@ public:
 
     ~Calendar() {};
 };
+
 
 #include "Calendar.cpp"
 

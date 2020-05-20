@@ -1,13 +1,7 @@
 #ifndef CALENDAR_REMIND_H
 #define CALENDAR_REMIND_H
 
-class Remind {
-    std::string textOfRemind;
-    std::vector<std::string> list;
-    int day;
-    int month;
-    int year;
-
+class Remind : public Template {
 public:
 
     friend class Calendar;
@@ -18,18 +12,10 @@ public:
         this -> year = year;
     }
 
-    void enter_text_of_remind();
-
-    void show_remind();
-
-    void delete_remind(int n);
-
-    void save_data(std::ostream& RemindsData);
-
-    void loading_from_file(std::istream& RemindsData);
+    void enter_text() override;
+    void show() override;
 
 };
-
 #include "Remind.cpp"
 
 #endif //CALENDAR_REMIND_H

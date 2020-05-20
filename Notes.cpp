@@ -1,17 +1,11 @@
-using namespace std;
-
-
-#include "windows.h"
-
-void Notes::enter_note_text() {
-
-    cout << "Please, enter note: " << endl;
+void Notes::enter_text() {
+    cout << "Please, enter text of your note: " << endl;
     cin.ignore();
-    getline(cin, textOfNote);
-    list.push_back(textOfNote);
+    getline(cin, text);
+    list.push_back(text);
 }
 
-void Notes::show_note() {
+void Notes::show(){
     HANDLE console = GetStdHandle(STD_OUTPUT_HANDLE);
     SetConsoleTextAttribute(console, FOREGROUND_BLUE);
     if (month < 10 && day <10) {
@@ -31,37 +25,5 @@ void Notes::show_note() {
     for (int i = 0; i < list.size(); i++) {
         cout << "-" << i + 1 << " ";
         cout << list.at(i) << endl;
-    }
-}
-
-void Notes::delete_note(int n) {
-    list.erase(list.begin() + n);
-    cout << "Done." << endl;
-}
-
-void Notes::save_data(std::ostream& NotesData) {
-    int amountOfDataWhileSaving;
-    amountOfDataWhileSaving = list.size();
-    NotesData << amountOfDataWhileSaving << endl;
-    NotesData << day << endl;
-    NotesData << month << endl;
-    NotesData << year << endl;
-    for (int n = 0; n < list.size(); n++) {
-        NotesData << list.at(n) << endl;
-    }
-}
-
-void Notes::loading_from_file(std::istream& NotesData){
-    int amountOfNotesWhileSavingData;
-    NotesData >> amountOfNotesWhileSavingData;
-    NotesData >> day;
-    NotesData >> month;
-    NotesData >> year;
-    NotesData.ignore();
-    for (int i = 0; i < amountOfNotesWhileSavingData; i++) {
-        string tmpTextOfNote;
-        getline(NotesData, textOfNote);
-        list.push_back(textOfNote);
-        NotesData.sync();
     }
 }

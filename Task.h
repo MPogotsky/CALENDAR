@@ -2,15 +2,9 @@
 #define CALENDAR_TASK_H
 
 
-class Task {
-
-    int day;
-    int month;
-    int year;
+class Task : public Template {
 
     string titleOfTheTaskList;
-    string textOfTheTask;
-    vector<string> tasksList;
 
 public:
 
@@ -24,15 +18,11 @@ public:
 
     void add_task();
 
-    void show_tasks();
+    void show() override;
 
     void change_status();
 
     void delete_task();
-
-    void save_data(std::ostream& TasksData);
-
-    void load_data(std::istream& TasksData);
 
 };
 
