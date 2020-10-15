@@ -1,21 +1,25 @@
 # CALENDAR
+Simple terminal calendar on C++.
 
-## Functionality:
-• The option to display the calendar on the specified time range with the current day selection.
+# Libraries used:
+* C++ STL
 
-• The possibility to display the calendar for the previous,current and next month.
+# Functionality:
+* The option to display the calendar on the specified time range with the current day selection.
 
-• Possibility to display calendar for any year.
+* The possibility to display the calendar for the previous,current and next month.
 
-• Ability to add and delete notes, reminders and tasks.
+* Possibility to display calendar for any year.
 
-• The Program saves the data (all Notes, Reminders and Tasks) in files and displays them after running the program.
+* Ability to add and delete notes, reminders and tasks.
 
-• Current day, notes, tasks and holidays are highlighted in colour.
+* The Program saves the data (all Notes, Reminders and Tasks) in files and displays them after running the program.
 
-• Reminders appear 2 days before the event after the start of the program.
+* Current day, notes, tasks and holidays are highlighted in colour.
 
-• Notes, holidays and tasks for the current day appear after the program is started.
+* Reminders appear 2 days before the event after the start of the program.
 
-• In tasks it is possible to change the status of the task. Tasks that are done will be highlighted in red.
+* Notes, holidays and tasks for the current day appear after the program is started.
+
+* In tasks it is possible to change the status of the task. Tasks that are done will be highlighted in red.
 
