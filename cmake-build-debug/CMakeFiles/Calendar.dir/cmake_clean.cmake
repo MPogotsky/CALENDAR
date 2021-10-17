@@ -2,8 +2,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/Calendar.dir/main.cpp.obj"
   "Calendar.exe"
   "Calendar.exe.manifest"
+  "Calendar.lib"
   "Calendar.pdb"
-  "libCalendar.dll.a"
 )
 
 # Per-language clean rules from dependency scanning.

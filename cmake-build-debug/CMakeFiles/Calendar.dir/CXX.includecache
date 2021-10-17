@@ -6,13 +6,7 @@
 
 #IncludeRegexTransform: 
 
-D:/C++PROJECTS/OOP/Projects/Calendar2.0/Calendar.cpp
-iomanip
--
-windows.h
--
-
-D:/C++PROJECTS/OOP/Projects/Calendar2.0/Calendar.h
+D:/Programming/Projects/CALENDAR/include/Calendar.h
 time.h
 -
 vector
@@ -22,55 +16,61 @@ fstream
 string
 -
 Template.h
-D:/C++PROJECTS/OOP/Projects/Calendar2.0/Template.h
+D:/Programming/Projects/CALENDAR/include/Template.h
 Notes.h
-D:/C++PROJECTS/OOP/Projects/Calendar2.0/Notes.h
+D:/Programming/Projects/CALENDAR/include/Notes.h
 Remind.h
-D:/C++PROJECTS/OOP/Projects/Calendar2.0/Remind.h
+D:/Programming/Projects/CALENDAR/include/Remind.h
 Task.h
-D:/C++PROJECTS/OOP/Projects/Calendar2.0/Task.h
+D:/Programming/Projects/CALENDAR/include/Task.h
 Holiday.h
-D:/C++PROJECTS/OOP/Projects/Calendar2.0/Holiday.h
-Calendar.cpp
-D:/C++PROJECTS/OOP/Projects/Calendar2.0/Calendar.cpp
+D:/Programming/Projects/CALENDAR/include/Holiday.h
+../src/Calendar.cpp
+D:/Programming/Projects/CALENDAR/src/Calendar.cpp
 
-D:/C++PROJECTS/OOP/Projects/Calendar2.0/Holiday.cpp
+D:/Programming/Projects/CALENDAR/include/Holiday.h
+../src/Holiday.cpp
+D:/Programming/Projects/CALENDAR/src/Holiday.cpp
 
-D:/C++PROJECTS/OOP/Projects/Calendar2.0/Holiday.h
-Holiday.cpp
-D:/C++PROJECTS/OOP/Projects/Calendar2.0/Holiday.cpp
+D:/Programming/Projects/CALENDAR/include/Notes.h
+../src/Notes.cpp
+D:/Programming/Projects/CALENDAR/src/Notes.cpp
 
-D:/C++PROJECTS/OOP/Projects/Calendar2.0/Notes.cpp
+D:/Programming/Projects/CALENDAR/include/Remind.h
+../src/Remind.cpp
+D:/Programming/Projects/CALENDAR/src/Remind.cpp
 
-D:/C++PROJECTS/OOP/Projects/Calendar2.0/Notes.h
-Notes.cpp
-D:/C++PROJECTS/OOP/Projects/Calendar2.0/Notes.cpp
+D:/Programming/Projects/CALENDAR/include/Task.h
+../src/Task.cpp
+D:/Programming/Projects/CALENDAR/src/Task.cpp
 
-D:/C++PROJECTS/OOP/Projects/Calendar2.0/Remind.cpp
-windows.h
-D:/C++PROJECTS/OOP/Projects/Calendar2.0/windows.h
+D:/Programming/Projects/CALENDAR/include/Template.h
+../src/Template.cpp
+D:/Programming/Projects/CALENDAR/src/Template.cpp
 
-D:/C++PROJECTS/OOP/Projects/Calendar2.0/Remind.h
-Remind.cpp
-D:/C++PROJECTS/OOP/Projects/Calendar2.0/Remind.cpp
-
-D:/C++PROJECTS/OOP/Projects/Calendar2.0/Task.cpp
-
-D:/C++PROJECTS/OOP/Projects/Calendar2.0/Task.h
-Task.cpp
-D:/C++PROJECTS/OOP/Projects/Calendar2.0/Task.cpp
-
-D:/C++PROJECTS/OOP/Projects/Calendar2.0/Template.cpp
-windows.h
-D:/C++PROJECTS/OOP/Projects/Calendar2.0/windows.h
-
-D:/C++PROJECTS/OOP/Projects/Calendar2.0/Template.h
-Template.cpp
-D:/C++PROJECTS/OOP/Projects/Calendar2.0/Template.cpp
-
-D:/C++PROJECTS/OOP/Projects/Calendar2.0/main.cpp
+D:/Programming/Projects/CALENDAR/main.cpp
 iostream
 -
-Calendar.h
-D:/C++PROJECTS/OOP/Projects/Calendar2.0/Calendar.h
+include/Calendar.h
+D:/Programming/Projects/CALENDAR/include/Calendar.h
+
+D:/Programming/Projects/CALENDAR/src/Calendar.cpp
+iomanip
+-
+Windows.h
+-
+
+D:/Programming/Projects/CALENDAR/src/Holiday.cpp
+
+D:/Programming/Projects/CALENDAR/src/Notes.cpp
+
+D:/Programming/Projects/CALENDAR/src/Remind.cpp
+Windows.h
+D:/Programming/Projects/CALENDAR/src/Windows.h
+
+D:/Programming/Projects/CALENDAR/src/Task.cpp
+
+D:/Programming/Projects/CALENDAR/src/Template.cpp
+Windows.h
+D:/Programming/Projects/CALENDAR/src/Windows.h
 

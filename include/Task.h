@@ -26,6 +26,6 @@ public:
 
 };
 
-#include "Task.cpp"
+#include "../src/Task.cpp"
 
 #endif //CALENDAR_TASK_H

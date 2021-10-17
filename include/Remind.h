@@ -16,6 +16,6 @@ public:
     void show() override;
 
 };
-#include "Remind.cpp"
+#include "../src/Remind.cpp"
 
 #endif //CALENDAR_REMIND_H

@@ -1,6 +1,6 @@
 using namespace std;
 
-#include "windows.h"
+#include "Windows.h"
 
 void Template::enter_text() {
     cout << "Please, enter text: " << endl;

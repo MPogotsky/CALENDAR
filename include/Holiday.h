@@ -21,6 +21,6 @@ public:
     void load_data(std::istream& Holidays);
 };
 
-#include "Holiday.cpp"
+#include "../src/Holiday.cpp"
 
 #endif //CALENDAR_HOLIDAY_H

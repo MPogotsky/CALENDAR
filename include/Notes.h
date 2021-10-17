@@ -18,6 +18,6 @@ public:
 };
 
 
-#include "Notes.cpp"
+#include "../src/Notes.cpp"
 
 #endif //CALENDAR_NOTES_H

@@ -1,7 +1,7 @@
 using namespace std;
 
 #include <iomanip>
-#include <windows.h>
+#include <Windows.h>
 
 
 int Calendar::set_to_default() {

@@ -25,6 +25,6 @@ public:
     void loading_from_file(std::istream &File);
 };
 
-#include "Template.cpp"
+#include "../src/Template.cpp"
 
 #endif //CALENDAR_TEMPLATE_H
